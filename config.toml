@@ -1,0 +1,18 @@
+siteTitle="PostGraphQL"
+baseColor = "#283593"
+linkPrefix = "/postgraphql-docs"
+guidePages = [
+  "/guide/",
+  "/guide/benefits/",
+  "/guide/evaluating/",
+  "/guide/library/",
+  "/guide/advanced-queries/",
+  "/guide/procedures/",
+  "/guide/anonymous-role/",
+]
+examplesPages = [
+  "/examples/kitchen-sink/",
+  "/examples/forum/",
+]
+apiPages = [
+]

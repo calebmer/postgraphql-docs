@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+ <html lang="en"><head><meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>Procedures | PostGraphQL</title><style id="typography.js">html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:0}article,aside,details,figcaption,figure,footer,header,main,menu,nav,section,summary{display:block}audio,canvas,progress,video{display:inline-block}audio:not([controls]){display:none;height:0}progress{vertical-align:baseline}[hidden],template{display:none}a{background-color:transparent;-webkit-text-decoration-skip:objects}a:active,a:hover{outline-width:0}abbr[title]{border-bottom:none;text-decoration:underline;text-decoration:underline dotted}b,strong{font-weight:inherit;font-weight:bolder}dfn{font-style:italic}h1{font-size:2em;margin:.67em 0}mark{background-color:#ff0;color:#000}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}img{border-style:none}svg:not(:root){overflow:hidden}code,kbd,pre,samp{font-family:monospace,monospace;font-size:1em}figure{margin:1em 40px}hr{box-sizing:content-box;height:0;overflow:visible}button,input,optgroup,select,textarea{font:inherit;margin:0}optgroup{font-weight:700}button,input{overflow:visible}button,select{text-transform:none}[type=reset],[type=submit],button,html [type=button]{-webkit-appearance:button}[type=button]::-moz-focus-inner,[type=reset]::-moz-focus-inner,[type=submit]::-moz-focus-inner,button::-moz-focus-inner{border-style:none;padding:0}[type=button]:-moz-focusring,[type=reset]:-moz-focusring,[type=submit]:-moz-focusring,button:-moz-focusring{outline:1px dotted ButtonText}fieldset{border:1px solid silver;margin:0 2px;padding:.35em .625em .75em}legend{box-sizing:border-box;color:inherit;display:table;max-width:100%;padding:0;white-space:normal}textarea{overflow:auto}[type=checkbox],[type=radio]{box-sizing:border-box;padding:0}[type=number]::-webkit-inner-spin-button,[type=number]::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}[type=search]::-webkit-search-cancel-button,[type=search]::-webkit-search-decoration{-webkit-appearance:none}::-webkit-input-placeholder{color:inherit;opacity:.54}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}html{font-size:100%;line-height:1.5em;box-sizing:border-box;overflow-y:scroll;}*{box-sizing:inherit;}*:before{box-sizing:inherit;}*:after{box-sizing:inherit;}body{color:hsla(0,0%,0%,0.8);font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif;font-weight:400;word-wrap:break-word;}img{max-width:100%;margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.5rem;}h1{margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.5rem;color:hsla(0,0%,0%,0.8);font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif;font-weight:700;text-rendering:optimizeLegibility;font-size:1.618rem;line-height:2.25rem;}h2{margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.5rem;color:hsla(0,0%,0%,0.8);font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif;font-weight:700;text-rendering:optimizeLegibility;font-size:1.33471rem;line-height:2.25rem;}h3{margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.5rem;color:hsla(0,0%,0%,0.8);font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif;font-weight:700;text-rendering:optimizeLegibility;font-size:1.21225rem;line-height:1.5rem;}h4{margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.5rem;color:hsla(0,0%,0%,0.8);font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif;font-weight:700;text-rendering:optimizeLegibility;font-size:1rem;line-height:1.5rem;}h5{margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.5rem;color:hsla(0,0%,0%,0.8);font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif;font-weight:700;text-rendering:optimizeLegibility;font-size:0.90825rem;line-height:1.5rem;}h6{margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.5rem;color:hsla(0,0%,0%,0.8);font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif;font-weight:700;text-rendering:optimizeLegibility;font-size:0.86558rem;line-height:1.5rem;}hgroup{margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.5rem;}ul{margin-left:1.5rem;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.5rem;list-style-position:outside;list-style-image:none;}ol{margin-left:1.5rem;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.5rem;list-style-position:outside;list-style-image:none;}dl{margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.5rem;}dd{margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.5rem;}p{margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.5rem;}figure{margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.5rem;}pre{margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.5rem;font-size:0.85rem;line-height:1.42;background:hsla(0,0%,0%,0.04);border-radius:3px;overflow:auto;padding:1.5rem;}table{margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.5rem;font-size:1rem;line-height:1.5rem;border-collapse:collapse;width:100%;}fieldset{margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.5rem;}blockquote{margin-left:1.5rem;margin-right:1.5rem;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.5rem;}form{margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.5rem;}noscript{margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.5rem;}iframe{margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.5rem;}hr{margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:calc(1.5rem - 1px);background:hsla(0,0%,0%,0.2);border:none;height:1px;}address{margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.5rem;}b{font-weight:700;}strong{font-weight:700;}dt{font-weight:700;}th{font-weight:700;}li{margin-bottom:calc(1.5rem / 2);}ol li{padding-left:0;}ul li{padding-left:0;}li > ol{margin-left:1.5rem;margin-bottom:calc(1.5rem / 2);margin-top:calc(1.5rem / 2);}li > ul{margin-left:1.5rem;margin-bottom:calc(1.5rem / 2);margin-top:calc(1.5rem / 2);}code{font-size:0.85rem;line-height:1.5rem;}kbd{font-size:0.85rem;line-height:1.5rem;}samp{font-size:0.85rem;line-height:1.5rem;}abbr{border-bottom:1px dotted hsla(0,0%,0%,0.5);cursor:help;}acronym{border-bottom:1px dotted hsla(0,0%,0%,0.5);cursor:help;}abbr[title]{border-bottom:1px dotted hsla(0,0%,0%,0.5);cursor:help;text-decoration:none;}thead{text-align:left;}td,th{text-align:left;border-bottom:1px solid hsla(0,0%,0%,0.12);font-feature-settings:tnum;padding-left:1rem;padding-right:1rem;padding-top:0.75rem;padding-bottom:calc(0.75rem - 1px);}th:first-child,td:first-child{padding-left:0;}th:last-child,td:last-child{padding-right:0;}tt,code{background-color:hsla(0,0%,0%,0.04);border-radius:3px;font-family:Consolas,"Roboto Mono","Liberation Mono",Menlo,Courier,monospace;padding:0;padding-top:0.2em;padding-bottom:0.2em;}pre code{background:none;line-height:1.42;}code:before,code:after,tt:before,tt:after{letter-spacing:-0.2em;content:" ";}pre code:before,pre code:after,pre tt:before,pre tt:after{content:"";}</style><style>.demo1-ball{border-radius:99px;background-color:#fff;width:50px;height:50px;border:3px solid #fff;position:absolute;background-size:50px}.hljs-comment,.hljs-quote{color:#998;font-style:italic}.hljs-keyword,.hljs-selector-tag,.hljs-subst{color:#333;font-weight:700}.hljs-literal,.hljs-number,.hljs-tag .hljs-attr,.hljs-template-variable,.hljs-variable{color:teal}.hljs-doctag,.hljs-string{color:#d14}.hljs-section,.hljs-selector-id,.hljs-title{color:#900;font-weight:700}.hljs-subst{font-weight:400}.hljs-class .hljs-title,.hljs-type{color:#458;font-weight:700}.hljs-attribute,.hljs-name,.hljs-tag{color:navy;font-weight:400}.hljs-link,.hljs-regexp{color:#009926}.hljs-bullet,.hljs-symbol{color:#990073}.hljs-built_in,.hljs-builtin-name{color:#0086b3}.hljs-meta{color:#999;font-weight:700}.hljs-deletion{background:#fdd}.hljs-addition{background:#dfd}.hljs-emphasis{font-style:italic}.hljs-strong{font-weight:700}@media only screen and (min-width:700px){.breakpoint-min-width-700{display:block}.breakpoint-max-width-700{display:none}}@media only screen and (max-width:700px){.breakpoint-min-width-700{display:none}.breakpoint-max-width-700{display:block}}</style><style>
+                  a {
+                    color: rgb(40,53,147);
+                  }
+                  .ball-0 {
+                    background-image: url(/postgraphql-docs/docs/some-react-code/0.jpg);
+                  }
+                  .ball-1 {
+                    background-image: url(/postgraphql-docs/docs/some-react-code/1.jpg);
+                  }
+                  .ball-2 {
+                    background-image: url(/postgraphql-docs/docs/some-react-code/2.jpg);
+                  }
+                  .ball-3 {
+                    background-image: url(/postgraphql-docs/docs/some-react-code/3.jpg);
+                  }
+                  .ball-4 {
+                    background-image: url(/postgraphql-docs/docs/some-react-code/4.jpg);
+                  }
+                  .ball-5 {
+                    background-image: url(/postgraphql-docs/docs/some-react-code/5.jpg);
+                  }
+                </style></head><body><div id="react-mount"><div data-reactroot="" data-reactid="1" data-react-checksum="-815907748"><div style="background:rgb(40,53,147);color:rgb(181,186,218);margin-bottom:2.25rem;" data-reactid="2"><div style="max-width:960px;margin-left:auto;margin-right:auto;padding-left:1.125rem;" data-reactid="3"><div style="padding:1.125rem 0;" data-reactid="4"><div style="float:left;margin-left:0%;margin-right:1.694915254237288%;width:32.20338983050847%;clear:none;height:24px;" data-reactid="5"><a style="text-decoration:none;color:rgb(181,186,218);font-size:1.59375rem;" href="/postgraphql-docs/" data-reactid="6">PostGraphQL</a><span style="display:block;clear:both;" data-reactid="7"> </span></div><div style="float:right;margin-left:0%;margin-right:0%;width:66.10169491525423%;clear:none;" data-reactid="8"><a style="float:right;color:rgb(181,186,218);text-decoration:none;margin-left:0.75rem;" href="https://github.com/calebmer/postgraphql" data-reactid="9">GitHub</a><a style="background:rgb(40,53,147);color:rgb(181,186,218);float:right;text-decoration:none;padding-left:0.75rem;padding-right:0.75rem;padding-bottom:1.125rem;margin-bottom:-1.5rem;padding-top:1.5rem;margin-top:-1.5rem;" href="/postgraphql-docs/examples/" data-reactid="10">Examples</a><a style="background:rgb(40,53,147);color:rgb(181,186,218);float:right;text-decoration:none;padding-left:0.75rem;padding-right:0.75rem;padding-bottom:1.125rem;margin-bottom:-1.5rem;padding-top:1.5rem;margin-top:-1.5rem;" href="/postgraphql-docs/api/" data-reactid="11">API</a><a style="background:rgb(40,53,147);color:rgb(181,186,218);float:right;text-decoration:none;padding-left:0.75rem;padding-right:0.75rem;padding-bottom:1.125rem;margin-bottom:-1.5rem;padding-top:1.5rem;margin-top:-1.5rem;" href="/postgraphql-docs/guide/" data-reactid="12">Guide</a><span style="display:block;clear:both;" data-reactid="13"> </span></div><span style="display:block;clear:both;" data-reactid="14"> </span></div><span style="display:block;clear:both;" data-reactid="15"> </span></div></div><div style="max-width:960px;margin-left:auto;margin-right:auto;padding:1.5rem 1.125rem;padding-top:0;" data-reactid="16"><div data-reactid="17"><div class="breakpoint-min-width-700" data-reactid="18"><div style="overflow-y:auto;padding-right:calc(0.75rem - 1px);position:absolute;width:calc(12rem - 1px);border-right:1px solid lightgrey;" data-reactid="19"><ul style="list-style:none;margin-left:0;margin-top:0.75rem;" data-reactid="20"><li style="margin-bottom:0.75rem;" data-reactid="21"><a style="text-decoration:none;" href="/postgraphql-docs/guide/" data-reactid="22">Basic Usage</a></li><li style="margin-bottom:0.75rem;" data-reactid="23"><a style="text-decoration:none;" href="/postgraphql-docs/guide/benefits/" data-reactid="24">Benefits</a></li><li style="margin-bottom:0.75rem;" data-reactid="25"><a style="text-decoration:none;" href="/postgraphql-docs/guide/evaluating/" data-reactid="26">Evaluating PostGraphQL For Your Project</a></li><li style="margin-bottom:0.75rem;" data-reactid="27"><a style="text-decoration:none;" href="/postgraphql-docs/guide/library/" data-reactid="28">Using PostGraphQL as a Library</a></li><li style="margin-bottom:0.75rem;" data-reactid="29"><a style="text-decoration:none;" href="/postgraphql-docs/guide/advanced-queries/" data-reactid="30">Advanced Queries</a></li><li style="margin-bottom:0.75rem;" data-reactid="31"><a style="text-decoration:none;" href="/postgraphql-docs/guide/procedures/" data-reactid="32"><strong data-reactid="33">Procedures</strong></a></li><li style="margin-bottom:0.75rem;" data-reactid="34"><a style="text-decoration:none;" href="/postgraphql-docs/guide/anonymous-role/" data-reactid="35">The Anonymous Role</a></li></ul></div><div style="padding:0 1.5rem;padding-left:calc(12rem + 1.5rem);" data-reactid="36"><div class="markdown" data-reactid="37"><h1 data-reactid="38">Procedures</h1><div data-reactid="39"><p>Procedures in PostgreSQL are very important to understand in order to make the most powerful PostGraphQL server you can. Procedures allow you to define business logic in the database in SQL or one of many other scripting languages. Often putting your business logic in the database will be more performant as PostgreSQL is already finely tuned to be highly performant and scale for data intensive uses.</p>
+<p>There are a few ways procedures in PostGraphQL can be used. All of these will be covered in their own section.</p>
+<ol>
+<li>As <a href="#mutation-procedures">mutations</a>.</li>
+<li>As <a href="#query-procedures">queries</a>.</li>
+<li>As <a href="#connection-procedures">connections</a> (list of nodes, like <code>postNodes</code>).</li>
+<li>As <a href="#computed-columns">computed columns</a>.</li>
+</ol>
+<p>For an example of what procedures look like, see the <a href="../../examples/forum/#schema">forum example SQL schema</a>.</p>
+<h2>Recommended Reading</h2>
+<ul>
+<li>PostgreSQL <a href="http://www.postgresql.org/docs/current/static/sql-createfunction.html"><code>CREATE FUNCTION</code></a> documentation for actually creating procedures.</li>
+<li>PostgreSQL <a href="http://www.postgresql.org/docs/current/static/sql-createtrigger.html"><code>CREATE TRIGGER</code></a> documentation.</li>
+<li>StackOverflow answer describing <a href="http://stackoverflow.com/a/11166268/1568890">computed columns in PostgreSQL</a>.</li>
+</ul>
+<h2>Scripting Languages</h2>
+<p>Procedures in PostgreSQL require you to use a scripting language. The two most common procedure languages for PostgreSQL are SQL and <a href="http://www.postgresql.org/docs/current/static/plpgsql.html">PL/pgSQL</a>. SQL is probably the easiest to use as you are most likely already familiar with it. PL/pgSQL is PostgreSQL’s custom scripting language which is fairly easy to find plenty of StackOverflow and other resources on with a few search engine queries. You’ll need to learn PL/pgSQL if you want to write any triggers, because SQL can’t be used for triggers. But again, don’t worry, you can definetly make awesome applications without know PL/pgSQL as well as other languages you are familiar with as long as you defer to the internet.</p>
+<p>A simple procedure written with SQL looks like this:</p>
+<pre><code class="language-sql"><span class="hljs-keyword">create</span> <span class="hljs-keyword">function</span> <span class="hljs-keyword">add</span>(a <span class="hljs-built_in">int</span>, b <span class="hljs-built_in">int</span>) <span class="hljs-keyword">returns</span> <span class="hljs-built_in">int</span> <span class="hljs-keyword">as</span> $$
+  <span class="hljs-keyword">select</span> a + b;
+$$ language sql immutable strict;
+</code></pre>
+<p>The samle procedure with PL/pgSQL would look like this:</p>
+<pre><code class="language-sql"><span class="hljs-keyword">create</span> <span class="hljs-keyword">function</span> <span class="hljs-keyword">add</span>(a <span class="hljs-built_in">int</span>, b <span class="hljs-built_in">int</span>) <span class="hljs-keyword">returns</span> <span class="hljs-built_in">int</span> <span class="hljs-keyword">as</span> $$
+<span class="hljs-keyword">begin</span>
+  <span class="hljs-keyword">return</span> a + b;
+<span class="hljs-keyword">end</span>;
+$$ language plpgsql immutable strict;
+</code></pre>
+<p>If you don’t want to use PL/pgSQL or SQL, many popular scripting languages can be used <em>inside</em> PostgreSQL to write your procedures! You can see a few of these projects here:</p>
+<ul>
+<li><a href="https://github.com/plv8/plv8">JavaScript (plv8)</a></li>
+<li><a href="https://github.com/knu/postgresql-plruby">Ruby (plruby)</a></li>
+</ul>
+<p>A procedure defined using JavaScript (for example) would look like:</p>
+<pre><code class="language-sql">-- This does look the exact same as the PL/pgSQL example…
+create function add(a int, b int) returns int as $$
+  return a + b;
+$$ language plv8 immutable strict;
+
+-- Here’s a better example from the plv8 repo…
+create function plv8_test(keys text[], vals text[]) returns text as $$
+  var object = {}
+  for (var i = 0; i &lt; keys.length; i++) {
+    object[keys[i]] = vals[i]
+  }
+  return JSON.stringify(object)
+$$ language plv8 immutable strict;
+</code></pre>
+<h2>Named Arguments</h2>
+<p>PostgreSQL allows you to mix named and positional (unnamed) arguments for your procedures. However, GraphQL will <em>only</em> allow named arguments. So if you don’t name an argument, PostGraphQL will give it a name like <code>arg1</code>, <code>arg2</code>, <code>arg3</code>, and so on. An example of a function with unnamed arguments is as follows:</p>
+<pre><code class="language-sql"><span class="hljs-keyword">create</span> <span class="hljs-keyword">function</span> <span class="hljs-keyword">add</span>(<span class="hljs-built_in">int</span>, <span class="hljs-built_in">int</span>) <span class="hljs-keyword">returns</span> <span class="hljs-built_in">int</span> <span class="hljs-keyword">as</span> $$
+  <span class="hljs-keyword">select</span> $<span class="hljs-number">1</span> + $<span class="hljs-number">2</span>;
+$$ language sql immutable strict;
+</code></pre>
+<p>Whereas named arguments look like:</p>
+<pre><code class="language-sql"><span class="hljs-keyword">create</span> <span class="hljs-keyword">function</span> <span class="hljs-keyword">add</span>(a <span class="hljs-built_in">int</span>, b <span class="hljs-built_in">int</span>) <span class="hljs-keyword">returns</span> <span class="hljs-built_in">int</span> <span class="hljs-keyword">as</span> $$
+  <span class="hljs-keyword">select</span> a + b;
+$$ language sql immutable strict;
+</code></pre>
+<h2><a name="mutation-procedures"></a>Mutation Procedures</h2>
+<p>By default, a procedure is “volatile” and PostGraphQL will treat it as a mutation. So for example, a procedure defined as:</p>
+<pre><code class="language-sql"><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">FUNCTION</span> my_function(a <span class="hljs-built_in">int</span>, b <span class="hljs-built_in">int</span>) <span class="hljs-keyword">RETURNS</span> <span class="hljs-built_in">int</span> <span class="hljs-keyword">AS</span> $$ … $$ <span class="hljs-keyword">LANGUAGE</span> <span class="hljs-keyword">SQL</span>;
+</code></pre>
+<p>Is equivalent to a procedure defined as:</p>
+<pre><code class="language-sql"><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">FUNCTION</span> my_function(a <span class="hljs-built_in">int</span>, b <span class="hljs-built_in">int</span>) <span class="hljs-keyword">RETURNS</span> <span class="hljs-built_in">int</span> <span class="hljs-keyword">AS</span> $$ … $$ <span class="hljs-keyword">LANGUAGE</span> <span class="hljs-keyword">SQL</span> VOLATILE;
+</code></pre>
+<p>From the PostgreSQL docs:</p>
+<blockquote>
+<p><code>VOLATILE</code> indicates that the function value can change even within a single table scan, so no optimizations can be made…But note that any function that has side-effects must be classified volatile, even if its result is quite predictable, to prevent calls from being optimized away; an example is <code>setval()</code>.</p>
+</blockquote>
+<p>In simpler terms <code>VOLATILE</code> basically means you are changing your data.</p>
+<p>Anyone familiar with HTTP could compare a <code>VOLATILE</code> procedure to “unsafe” HTTP methods like <code>POST</code>, <code>PUT</code>, and <code>DELETE</code>.</p>
+<p>All mutative procedures will be represented in the GraphQL type system by PostGraphQL in a way that is Relay compatible with a single input object. You would execute a procedure similar to this one like so:</p>
+<pre><code class="language-graphql">mutation {
+  myFunction(<span class="hljs-selector-tag">input</span>: { <span class="hljs-selector-tag">a</span>: <span class="hljs-number">1</span>, <span class="hljs-selector-tag">b</span>: <span class="hljs-number">2</span> }) {
+    output
+  }
+}
+</code></pre>
+<p>Always look at the documentation in GraphiQL to find all the parameters you may use!</p>
+<h2><a name="query-procedures"></a>Query Procedures</h2>
+<p>Similar to how you use <code>VOLATILE</code> to specify a mutative procedure, a query procedure can be specified using <code>IMMUTABLE</code> or <code>STABLE</code> identifiers. For example:</p>
+<pre><code class="language-sql"><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">FUNCTION</span> my_function(a <span class="hljs-built_in">int</span>, b <span class="hljs-built_in">int</span>) <span class="hljs-keyword">RETURNS</span> <span class="hljs-built_in">int</span> <span class="hljs-keyword">AS</span> $$ … $$ <span class="hljs-keyword">LANGUAGE</span> <span class="hljs-keyword">SQL</span> STABLE;
+
+<span class="hljs-comment">-- or…</span>
+
+<span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">FUNCTION</span> my_function(a <span class="hljs-built_in">int</span>, b <span class="hljs-built_in">int</span>) <span class="hljs-keyword">RETURNS</span> <span class="hljs-built_in">int</span> <span class="hljs-keyword">AS</span> $$ … $$ <span class="hljs-keyword">LANGUAGE</span> <span class="hljs-keyword">SQL</span> IMMUTABLE;
+
+<span class="hljs-comment">-- or if you wanted to return a row from a table…</span>
+
+<span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">FUNCTION</span> my_function(a <span class="hljs-built_in">int</span>, b <span class="hljs-built_in">int</span>) <span class="hljs-keyword">RETURNS</span> my_table <span class="hljs-keyword">AS</span> $$ … $$ <span class="hljs-keyword">LANGUAGE</span> <span class="hljs-keyword">SQL</span> STABLE;
+</code></pre>
+<p>From the PostgreSQL docs:</p>
+<blockquote>
+<p><code>IMMUTABLE</code> indicates that the function cannot modify the database and always returns the same result when given the same argument values; that is, it does not do database lookups or otherwise use information not directly present in its argument list. If this option is given, any call of the function with all-constant arguments can be immediately replaced with the function value.</p>
+</blockquote>
+<p>and…</p>
+<blockquote>
+<p><code>STABLE</code> indicates that the function cannot modify the database, and that within a single table scan it will consistently return the same result for the same argument values, but that its result could change across SQL statements. This is the appropriate selection for functions whose results depend on database lookups, parameter variables (such as the current time zone), etc. (It is inappropriate for AFTER triggers that wish to query rows modified by the current command).</p>
+</blockquote>
+<p>To use the HTTP analogy again, <code>IMMUTABLE</code> and <code>STABLE</code> are comparable to “safe” HTTP methods like <code>GET</code> and <code>HEAD</code>.</p>
+<p>To query such a procedure in PostGraphQL you would do the following:</p>
+<pre><code class="language-graphql">{
+  # <span class="hljs-keyword">For</span> a <span class="hljs-function"><span class="hljs-keyword">procedure</span> <span class="hljs-title">without</span> <span class="hljs-title">arguments</span>
+  <span class="hljs-title">myFunction</span>
+
+  # <span class="hljs-title">For</span> <span class="hljs-title">a</span> <span class="hljs-title">procedure</span> <span class="hljs-title">with</span> <span class="hljs-title">arguments</span>
+  <span class="hljs-title">myFunction</span><span class="hljs-params">(a: 1, b: 2)</span>
+
+  # <span class="hljs-title">For</span> <span class="hljs-title">a</span> <span class="hljs-title">procedure</span> <span class="hljs-title">that</span> <span class="hljs-title">returns</span> <span class="hljs-title">a</span> <span class="hljs-title">row</span>
+  <span class="hljs-title">myFunction</span><span class="hljs-params">(a: 1, b: 2)</span> <span class="hljs-comment">{
+    id
+  }</span>
+}
+</span></code></pre>
+<h2><a name="connection-procedures"></a>Connection Procedures</h2>
+<p>A connection query can be made from any function that returns a <code>setof</code> with a table type. This feature is also significant in that it gives you the ability to create complex queries over a set of data. Queries that connections (like <code>personNodes</code>) in PostGraphQL do not support.</p>
+<p>To create a function that returns a connection, use the following SQL:</p>
+<pre><code class="language-sql"><span class="hljs-comment">-- Assuming we already have a table named `person`…</span>
+
+<span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">FUNCTION</span> my_function(a <span class="hljs-built_in">int</span>, b <span class="hljs-built_in">int</span>) <span class="hljs-keyword">RETURNS</span> SETOF person <span class="hljs-keyword">AS</span> $$ … $$ <span class="hljs-keyword">LANGUAGE</span> <span class="hljs-keyword">SQL</span>;
+</code></pre>
+<p>To query a set in PostGraphQL, you would use all of the connection arguments you are familiar with in addition to the arguments to your procedure. For example:</p>
+<pre><code class="language-graphql">{
+  <span class="hljs-selector-tag">myFunction</span>(<span class="hljs-attribute">a</span>: <span class="hljs-number">1</span>, <span class="hljs-attribute">b</span>: <span class="hljs-number">2</span>, <span class="hljs-attribute">first</span>: <span class="hljs-number">2</span>) {
+    <span class="hljs-selector-tag">pageInfo</span> {
+      <span class="hljs-selector-tag">hasNextPage</span>
+      <span class="hljs-selector-tag">hasPrevPage</span>
+    }
+    <span class="hljs-selector-tag">edges</span> {
+      <span class="hljs-selector-tag">cursor</span>
+      <span class="hljs-selector-tag">node</span> {
+        id
+      }
+    }
+  }
+}
+</code></pre>
+<p>For more information on constructing advanced queries, read <a href="../advanced-queries/">this article</a>.</p>
+<h2><a name="computed-columns"></a>Computed Columns</h2>
+<p>PostGraphQL also provides support for computed columns. In order to define a computed column, just write a function that is <code>STABLE</code> or <code>IMMUTABLE</code> and has a table in your schema as its first argument. For example:</p>
+<pre><code class="language-sql"><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">FUNCTION</span> full_name(person person) <span class="hljs-keyword">RETURNS</span> <span class="hljs-built_in">text</span> <span class="hljs-keyword">AS</span> $$
+  <span class="hljs-keyword">select</span> person.given_name || <span class="hljs-string">' '</span> || person.family_name
+$$ <span class="hljs-keyword">LANGUAGE</span> <span class="hljs-keyword">SQL</span>;
+</code></pre>
+<p>Will create a computed column for your table named <code>person</code>. If you want, you can also prefix your computed procedure’s name with your table name. This is helpful when you want to avoid namespacing clashes but it is not required.</p>
+<pre><code class="language-sql"><span class="hljs-comment">-- PostGraphQL will treat this the same as the procedure above.</span>
+
+<span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">FUNCTION</span> person_full_name(person person) <span class="hljs-keyword">RETURNS</span> <span class="hljs-built_in">text</span> <span class="hljs-keyword">AS</span> $$
+  <span class="hljs-keyword">select</span> person.given_name || <span class="hljs-string">' '</span> || person.family_name
+$$ <span class="hljs-keyword">LANGUAGE</span> <span class="hljs-keyword">SQL</span>;
+</code></pre>
+<p>To query these in the PostGraphQL schema, its pretty intuitive:</p>
+<pre><code class="language-graphql">{
+  <span class="hljs-selector-tag">person</span>(<span class="hljs-attribute">id</span>: …) {
+    givenName
+    familyName
+    fullName # <span class="hljs-selector-tag">A</span> <span class="hljs-selector-tag">computed</span> <span class="hljs-selector-tag">column</span>, <span class="hljs-selector-tag">but</span> <span class="hljs-selector-tag">the</span> <span class="hljs-selector-tag">client</span> <span class="hljs-selector-tag">doesn</span>’<span class="hljs-selector-tag">t</span> <span class="hljs-selector-tag">even</span> <span class="hljs-selector-tag">know</span>!
+    <span class="hljs-selector-tag">myFunction</span>(<span class="hljs-attribute">a</span>: <span class="hljs-number">1</span>, <span class="hljs-attribute">b</span>: <span class="hljs-number">2</span>) # <span class="hljs-selector-tag">A</span> <span class="hljs-selector-tag">computed</span> <span class="hljs-selector-tag">column</span> <span class="hljs-selector-tag">with</span> <span class="hljs-selector-tag">arguments</span>.
+  }
+}
+</code></pre>
+<hr>
+<p>For ideas on how to use procedures in PostGraphQL, remember to check out the <a href="../../examples/forum/#schema">forum example SQL schema</a>!</p>
+</div></div></div></div><div class="breakpoint-max-width-700" data-reactid="40"><strong data-reactid="41">Topics:</strong><!-- react-text: 42 --> <!-- /react-text --><select data-reactid="43"><option value="/postgraphql-docs/guide/" data-reactid="44">Basic Usage</option><option value="/postgraphql-docs/guide/benefits/" data-reactid="45">Benefits</option><option value="/postgraphql-docs/guide/evaluating/" data-reactid="46">Evaluating PostGraphQL For Your Project</option><option value="/postgraphql-docs/guide/library/" data-reactid="47">Using PostGraphQL as a Library</option><option value="/postgraphql-docs/guide/advanced-queries/" data-reactid="48">Advanced Queries</option><option selected="" value="/postgraphql-docs/guide/procedures/" data-reactid="49">Procedures</option><option value="/postgraphql-docs/guide/anonymous-role/" data-reactid="50">The Anonymous Role</option></select><br data-reactid="51"/><br data-reactid="52"/><div class="markdown" data-reactid="53"><h1 data-reactid="54">Procedures</h1><div data-reactid="55"><p>Procedures in PostgreSQL are very important to understand in order to make the most powerful PostGraphQL server you can. Procedures allow you to define business logic in the database in SQL or one of many other scripting languages. Often putting your business logic in the database will be more performant as PostgreSQL is already finely tuned to be highly performant and scale for data intensive uses.</p>
+<p>There are a few ways procedures in PostGraphQL can be used. All of these will be covered in their own section.</p>
+<ol>
+<li>As <a href="#mutation-procedures">mutations</a>.</li>
+<li>As <a href="#query-procedures">queries</a>.</li>
+<li>As <a href="#connection-procedures">connections</a> (list of nodes, like <code>postNodes</code>).</li>
+<li>As <a href="#computed-columns">computed columns</a>.</li>
+</ol>
+<p>For an example of what procedures look like, see the <a href="../../examples/forum/#schema">forum example SQL schema</a>.</p>
+<h2>Recommended Reading</h2>
+<ul>
+<li>PostgreSQL <a href="http://www.postgresql.org/docs/current/static/sql-createfunction.html"><code>CREATE FUNCTION</code></a> documentation for actually creating procedures.</li>
+<li>PostgreSQL <a href="http://www.postgresql.org/docs/current/static/sql-createtrigger.html"><code>CREATE TRIGGER</code></a> documentation.</li>
+<li>StackOverflow answer describing <a href="http://stackoverflow.com/a/11166268/1568890">computed columns in PostgreSQL</a>.</li>
+</ul>
+<h2>Scripting Languages</h2>
+<p>Procedures in PostgreSQL require you to use a scripting language. The two most common procedure languages for PostgreSQL are SQL and <a href="http://www.postgresql.org/docs/current/static/plpgsql.html">PL/pgSQL</a>. SQL is probably the easiest to use as you are most likely already familiar with it. PL/pgSQL is PostgreSQL’s custom scripting language which is fairly easy to find plenty of StackOverflow and other resources on with a few search engine queries. You’ll need to learn PL/pgSQL if you want to write any triggers, because SQL can’t be used for triggers. But again, don’t worry, you can definetly make awesome applications without know PL/pgSQL as well as other languages you are familiar with as long as you defer to the internet.</p>
+<p>A simple procedure written with SQL looks like this:</p>
+<pre><code class="language-sql"><span class="hljs-keyword">create</span> <span class="hljs-keyword">function</span> <span class="hljs-keyword">add</span>(a <span class="hljs-built_in">int</span>, b <span class="hljs-built_in">int</span>) <span class="hljs-keyword">returns</span> <span class="hljs-built_in">int</span> <span class="hljs-keyword">as</span> $$
+  <span class="hljs-keyword">select</span> a + b;
+$$ language sql immutable strict;
+</code></pre>
+<p>The samle procedure with PL/pgSQL would look like this:</p>
+<pre><code class="language-sql"><span class="hljs-keyword">create</span> <span class="hljs-keyword">function</span> <span class="hljs-keyword">add</span>(a <span class="hljs-built_in">int</span>, b <span class="hljs-built_in">int</span>) <span class="hljs-keyword">returns</span> <span class="hljs-built_in">int</span> <span class="hljs-keyword">as</span> $$
+<span class="hljs-keyword">begin</span>
+  <span class="hljs-keyword">return</span> a + b;
+<span class="hljs-keyword">end</span>;
+$$ language plpgsql immutable strict;
+</code></pre>
+<p>If you don’t want to use PL/pgSQL or SQL, many popular scripting languages can be used <em>inside</em> PostgreSQL to write your procedures! You can see a few of these projects here:</p>
+<ul>
+<li><a href="https://github.com/plv8/plv8">JavaScript (plv8)</a></li>
+<li><a href="https://github.com/knu/postgresql-plruby">Ruby (plruby)</a></li>
+</ul>
+<p>A procedure defined using JavaScript (for example) would look like:</p>
+<pre><code class="language-sql">-- This does look the exact same as the PL/pgSQL example…
+create function add(a int, b int) returns int as $$
+  return a + b;
+$$ language plv8 immutable strict;
+
+-- Here’s a better example from the plv8 repo…
+create function plv8_test(keys text[], vals text[]) returns text as $$
+  var object = {}
+  for (var i = 0; i &lt; keys.length; i++) {
+    object[keys[i]] = vals[i]
+  }
+  return JSON.stringify(object)
+$$ language plv8 immutable strict;
+</code></pre>
+<h2>Named Arguments</h2>
+<p>PostgreSQL allows you to mix named and positional (unnamed) arguments for your procedures. However, GraphQL will <em>only</em> allow named arguments. So if you don’t name an argument, PostGraphQL will give it a name like <code>arg1</code>, <code>arg2</code>, <code>arg3</code>, and so on. An example of a function with unnamed arguments is as follows:</p>
+<pre><code class="language-sql"><span class="hljs-keyword">create</span> <span class="hljs-keyword">function</span> <span class="hljs-keyword">add</span>(<span class="hljs-built_in">int</span>, <span class="hljs-built_in">int</span>) <span class="hljs-keyword">returns</span> <span class="hljs-built_in">int</span> <span class="hljs-keyword">as</span> $$
+  <span class="hljs-keyword">select</span> $<span class="hljs-number">1</span> + $<span class="hljs-number">2</span>;
+$$ language sql immutable strict;
+</code></pre>
+<p>Whereas named arguments look like:</p>
+<pre><code class="language-sql"><span class="hljs-keyword">create</span> <span class="hljs-keyword">function</span> <span class="hljs-keyword">add</span>(a <span class="hljs-built_in">int</span>, b <span class="hljs-built_in">int</span>) <span class="hljs-keyword">returns</span> <span class="hljs-built_in">int</span> <span class="hljs-keyword">as</span> $$
+  <span class="hljs-keyword">select</span> a + b;
+$$ language sql immutable strict;
+</code></pre>
+<h2><a name="mutation-procedures"></a>Mutation Procedures</h2>
+<p>By default, a procedure is “volatile” and PostGraphQL will treat it as a mutation. So for example, a procedure defined as:</p>
+<pre><code class="language-sql"><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">FUNCTION</span> my_function(a <span class="hljs-built_in">int</span>, b <span class="hljs-built_in">int</span>) <span class="hljs-keyword">RETURNS</span> <span class="hljs-built_in">int</span> <span class="hljs-keyword">AS</span> $$ … $$ <span class="hljs-keyword">LANGUAGE</span> <span class="hljs-keyword">SQL</span>;
+</code></pre>
+<p>Is equivalent to a procedure defined as:</p>
+<pre><code class="language-sql"><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">FUNCTION</span> my_function(a <span class="hljs-built_in">int</span>, b <span class="hljs-built_in">int</span>) <span class="hljs-keyword">RETURNS</span> <span class="hljs-built_in">int</span> <span class="hljs-keyword">AS</span> $$ … $$ <span class="hljs-keyword">LANGUAGE</span> <span class="hljs-keyword">SQL</span> VOLATILE;
+</code></pre>
+<p>From the PostgreSQL docs:</p>
+<blockquote>
+<p><code>VOLATILE</code> indicates that the function value can change even within a single table scan, so no optimizations can be made…But note that any function that has side-effects must be classified volatile, even if its result is quite predictable, to prevent calls from being optimized away; an example is <code>setval()</code>.</p>
+</blockquote>
+<p>In simpler terms <code>VOLATILE</code> basically means you are changing your data.</p>
+<p>Anyone familiar with HTTP could compare a <code>VOLATILE</code> procedure to “unsafe” HTTP methods like <code>POST</code>, <code>PUT</code>, and <code>DELETE</code>.</p>
+<p>All mutative procedures will be represented in the GraphQL type system by PostGraphQL in a way that is Relay compatible with a single input object. You would execute a procedure similar to this one like so:</p>
+<pre><code class="language-graphql">mutation {
+  myFunction(<span class="hljs-selector-tag">input</span>: { <span class="hljs-selector-tag">a</span>: <span class="hljs-number">1</span>, <span class="hljs-selector-tag">b</span>: <span class="hljs-number">2</span> }) {
+    output
+  }
+}
+</code></pre>
+<p>Always look at the documentation in GraphiQL to find all the parameters you may use!</p>
+<h2><a name="query-procedures"></a>Query Procedures</h2>
+<p>Similar to how you use <code>VOLATILE</code> to specify a mutative procedure, a query procedure can be specified using <code>IMMUTABLE</code> or <code>STABLE</code> identifiers. For example:</p>
+<pre><code class="language-sql"><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">FUNCTION</span> my_function(a <span class="hljs-built_in">int</span>, b <span class="hljs-built_in">int</span>) <span class="hljs-keyword">RETURNS</span> <span class="hljs-built_in">int</span> <span class="hljs-keyword">AS</span> $$ … $$ <span class="hljs-keyword">LANGUAGE</span> <span class="hljs-keyword">SQL</span> STABLE;
+
+<span class="hljs-comment">-- or…</span>
+
+<span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">FUNCTION</span> my_function(a <span class="hljs-built_in">int</span>, b <span class="hljs-built_in">int</span>) <span class="hljs-keyword">RETURNS</span> <span class="hljs-built_in">int</span> <span class="hljs-keyword">AS</span> $$ … $$ <span class="hljs-keyword">LANGUAGE</span> <span class="hljs-keyword">SQL</span> IMMUTABLE;
+
+<span class="hljs-comment">-- or if you wanted to return a row from a table…</span>
+
+<span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">FUNCTION</span> my_function(a <span class="hljs-built_in">int</span>, b <span class="hljs-built_in">int</span>) <span class="hljs-keyword">RETURNS</span> my_table <span class="hljs-keyword">AS</span> $$ … $$ <span class="hljs-keyword">LANGUAGE</span> <span class="hljs-keyword">SQL</span> STABLE;
+</code></pre>
+<p>From the PostgreSQL docs:</p>
+<blockquote>
+<p><code>IMMUTABLE</code> indicates that the function cannot modify the database and always returns the same result when given the same argument values; that is, it does not do database lookups or otherwise use information not directly present in its argument list. If this option is given, any call of the function with all-constant arguments can be immediately replaced with the function value.</p>
+</blockquote>
+<p>and…</p>
+<blockquote>
+<p><code>STABLE</code> indicates that the function cannot modify the database, and that within a single table scan it will consistently return the same result for the same argument values, but that its result could change across SQL statements. This is the appropriate selection for functions whose results depend on database lookups, parameter variables (such as the current time zone), etc. (It is inappropriate for AFTER triggers that wish to query rows modified by the current command).</p>
+</blockquote>
+<p>To use the HTTP analogy again, <code>IMMUTABLE</code> and <code>STABLE</code> are comparable to “safe” HTTP methods like <code>GET</code> and <code>HEAD</code>.</p>
+<p>To query such a procedure in PostGraphQL you would do the following:</p>
+<pre><code class="language-graphql">{
+  # <span class="hljs-keyword">For</span> a <span class="hljs-function"><span class="hljs-keyword">procedure</span> <span class="hljs-title">without</span> <span class="hljs-title">arguments</span>
+  <span class="hljs-title">myFunction</span>
+
+  # <span class="hljs-title">For</span> <span class="hljs-title">a</span> <span class="hljs-title">procedure</span> <span class="hljs-title">with</span> <span class="hljs-title">arguments</span>
+  <span class="hljs-title">myFunction</span><span class="hljs-params">(a: 1, b: 2)</span>
+
+  # <span class="hljs-title">For</span> <span class="hljs-title">a</span> <span class="hljs-title">procedure</span> <span class="hljs-title">that</span> <span class="hljs-title">returns</span> <span class="hljs-title">a</span> <span class="hljs-title">row</span>
+  <span class="hljs-title">myFunction</span><span class="hljs-params">(a: 1, b: 2)</span> <span class="hljs-comment">{
+    id
+  }</span>
+}
+</span></code></pre>
+<h2><a name="connection-procedures"></a>Connection Procedures</h2>
+<p>A connection query can be made from any function that returns a <code>setof</code> with a table type. This feature is also significant in that it gives you the ability to create complex queries over a set of data. Queries that connections (like <code>personNodes</code>) in PostGraphQL do not support.</p>
+<p>To create a function that returns a connection, use the following SQL:</p>
+<pre><code class="language-sql"><span class="hljs-comment">-- Assuming we already have a table named `person`…</span>
+
+<span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">FUNCTION</span> my_function(a <span class="hljs-built_in">int</span>, b <span class="hljs-built_in">int</span>) <span class="hljs-keyword">RETURNS</span> SETOF person <span class="hljs-keyword">AS</span> $$ … $$ <span class="hljs-keyword">LANGUAGE</span> <span class="hljs-keyword">SQL</span>;
+</code></pre>
+<p>To query a set in PostGraphQL, you would use all of the connection arguments you are familiar with in addition to the arguments to your procedure. For example:</p>
+<pre><code class="language-graphql">{
+  <span class="hljs-selector-tag">myFunction</span>(<span class="hljs-attribute">a</span>: <span class="hljs-number">1</span>, <span class="hljs-attribute">b</span>: <span class="hljs-number">2</span>, <span class="hljs-attribute">first</span>: <span class="hljs-number">2</span>) {
+    <span class="hljs-selector-tag">pageInfo</span> {
+      <span class="hljs-selector-tag">hasNextPage</span>
+      <span class="hljs-selector-tag">hasPrevPage</span>
+    }
+    <span class="hljs-selector-tag">edges</span> {
+      <span class="hljs-selector-tag">cursor</span>
+      <span class="hljs-selector-tag">node</span> {
+        id
+      }
+    }
+  }
+}
+</code></pre>
+<p>For more information on constructing advanced queries, read <a href="../advanced-queries/">this article</a>.</p>
+<h2><a name="computed-columns"></a>Computed Columns</h2>
+<p>PostGraphQL also provides support for computed columns. In order to define a computed column, just write a function that is <code>STABLE</code> or <code>IMMUTABLE</code> and has a table in your schema as its first argument. For example:</p>
+<pre><code class="language-sql"><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">FUNCTION</span> full_name(person person) <span class="hljs-keyword">RETURNS</span> <span class="hljs-built_in">text</span> <span class="hljs-keyword">AS</span> $$
+  <span class="hljs-keyword">select</span> person.given_name || <span class="hljs-string">' '</span> || person.family_name
+$$ <span class="hljs-keyword">LANGUAGE</span> <span class="hljs-keyword">SQL</span>;
+</code></pre>
+<p>Will create a computed column for your table named <code>person</code>. If you want, you can also prefix your computed procedure’s name with your table name. This is helpful when you want to avoid namespacing clashes but it is not required.</p>
+<pre><code class="language-sql"><span class="hljs-comment">-- PostGraphQL will treat this the same as the procedure above.</span>
+
+<span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">FUNCTION</span> person_full_name(person person) <span class="hljs-keyword">RETURNS</span> <span class="hljs-built_in">text</span> <span class="hljs-keyword">AS</span> $$
+  <span class="hljs-keyword">select</span> person.given_name || <span class="hljs-string">' '</span> || person.family_name
+$$ <span class="hljs-keyword">LANGUAGE</span> <span class="hljs-keyword">SQL</span>;
+</code></pre>
+<p>To query these in the PostGraphQL schema, its pretty intuitive:</p>
+<pre><code class="language-graphql">{
+  <span class="hljs-selector-tag">person</span>(<span class="hljs-attribute">id</span>: …) {
+    givenName
+    familyName
+    fullName # <span class="hljs-selector-tag">A</span> <span class="hljs-selector-tag">computed</span> <span class="hljs-selector-tag">column</span>, <span class="hljs-selector-tag">but</span> <span class="hljs-selector-tag">the</span> <span class="hljs-selector-tag">client</span> <span class="hljs-selector-tag">doesn</span>’<span class="hljs-selector-tag">t</span> <span class="hljs-selector-tag">even</span> <span class="hljs-selector-tag">know</span>!
+    <span class="hljs-selector-tag">myFunction</span>(<span class="hljs-attribute">a</span>: <span class="hljs-number">1</span>, <span class="hljs-attribute">b</span>: <span class="hljs-number">2</span>) # <span class="hljs-selector-tag">A</span> <span class="hljs-selector-tag">computed</span> <span class="hljs-selector-tag">column</span> <span class="hljs-selector-tag">with</span> <span class="hljs-selector-tag">arguments</span>.
+  }
+}
+</code></pre>
+<hr>
+<p>For ideas on how to use procedures in PostGraphQL, remember to check out the <a href="../../examples/forum/#schema">forum example SQL schema</a>!</p>
+</div></div></div></div><span style="display:block;clear:both;" data-reactid="56"> </span></div></div></div><script src="/postgraphql-docs/bundle.js?t=1473678537470"></script></body></html>

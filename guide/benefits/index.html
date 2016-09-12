@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+ <html lang="en"><head><meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>Benefits | PostGraphQL</title><style id="typography.js">html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:0}article,aside,details,figcaption,figure,footer,header,main,menu,nav,section,summary{display:block}audio,canvas,progress,video{display:inline-block}audio:not([controls]){display:none;height:0}progress{vertical-align:baseline}[hidden],template{display:none}a{background-color:transparent;-webkit-text-decoration-skip:objects}a:active,a:hover{outline-width:0}abbr[title]{border-bottom:none;text-decoration:underline;text-decoration:underline dotted}b,strong{font-weight:inherit;font-weight:bolder}dfn{font-style:italic}h1{font-size:2em;margin:.67em 0}mark{background-color:#ff0;color:#000}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}img{border-style:none}svg:not(:root){overflow:hidden}code,kbd,pre,samp{font-family:monospace,monospace;font-size:1em}figure{margin:1em 40px}hr{box-sizing:content-box;height:0;overflow:visible}button,input,optgroup,select,textarea{font:inherit;margin:0}optgroup{font-weight:700}button,input{overflow:visible}button,select{text-transform:none}[type=reset],[type=submit],button,html [type=button]{-webkit-appearance:button}[type=button]::-moz-focus-inner,[type=reset]::-moz-focus-inner,[type=submit]::-moz-focus-inner,button::-moz-focus-inner{border-style:none;padding:0}[type=button]:-moz-focusring,[type=reset]:-moz-focusring,[type=submit]:-moz-focusring,button:-moz-focusring{outline:1px dotted ButtonText}fieldset{border:1px solid silver;margin:0 2px;padding:.35em .625em .75em}legend{box-sizing:border-box;color:inherit;display:table;max-width:100%;padding:0;white-space:normal}textarea{overflow:auto}[type=checkbox],[type=radio]{box-sizing:border-box;padding:0}[type=number]::-webkit-inner-spin-button,[type=number]::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}[type=search]::-webkit-search-cancel-button,[type=search]::-webkit-search-decoration{-webkit-appearance:none}::-webkit-input-placeholder{color:inherit;opacity:.54}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}html{font-size:100%;line-height:1.5em;box-sizing:border-box;overflow-y:scroll;}*{box-sizing:inherit;}*:before{box-sizing:inherit;}*:after{box-sizing:inherit;}body{color:hsla(0,0%,0%,0.8);font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif;font-weight:400;word-wrap:break-word;}img{max-width:100%;margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.5rem;}h1{margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.5rem;color:hsla(0,0%,0%,0.8);font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif;font-weight:700;text-rendering:optimizeLegibility;font-size:1.618rem;line-height:2.25rem;}h2{margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.5rem;color:hsla(0,0%,0%,0.8);font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif;font-weight:700;text-rendering:optimizeLegibility;font-size:1.33471rem;line-height:2.25rem;}h3{margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.5rem;color:hsla(0,0%,0%,0.8);font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif;font-weight:700;text-rendering:optimizeLegibility;font-size:1.21225rem;line-height:1.5rem;}h4{margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.5rem;color:hsla(0,0%,0%,0.8);font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif;font-weight:700;text-rendering:optimizeLegibility;font-size:1rem;line-height:1.5rem;}h5{margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.5rem;color:hsla(0,0%,0%,0.8);font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif;font-weight:700;text-rendering:optimizeLegibility;font-size:0.90825rem;line-height:1.5rem;}h6{margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.5rem;color:hsla(0,0%,0%,0.8);font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif;font-weight:700;text-rendering:optimizeLegibility;font-size:0.86558rem;line-height:1.5rem;}hgroup{margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.5rem;}ul{margin-left:1.5rem;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.5rem;list-style-position:outside;list-style-image:none;}ol{margin-left:1.5rem;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.5rem;list-style-position:outside;list-style-image:none;}dl{margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.5rem;}dd{margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.5rem;}p{margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.5rem;}figure{margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.5rem;}pre{margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.5rem;font-size:0.85rem;line-height:1.42;background:hsla(0,0%,0%,0.04);border-radius:3px;overflow:auto;padding:1.5rem;}table{margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.5rem;font-size:1rem;line-height:1.5rem;border-collapse:collapse;width:100%;}fieldset{margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.5rem;}blockquote{margin-left:1.5rem;margin-right:1.5rem;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.5rem;}form{margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.5rem;}noscript{margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.5rem;}iframe{margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.5rem;}hr{margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:calc(1.5rem - 1px);background:hsla(0,0%,0%,0.2);border:none;height:1px;}address{margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.5rem;}b{font-weight:700;}strong{font-weight:700;}dt{font-weight:700;}th{font-weight:700;}li{margin-bottom:calc(1.5rem / 2);}ol li{padding-left:0;}ul li{padding-left:0;}li > ol{margin-left:1.5rem;margin-bottom:calc(1.5rem / 2);margin-top:calc(1.5rem / 2);}li > ul{margin-left:1.5rem;margin-bottom:calc(1.5rem / 2);margin-top:calc(1.5rem / 2);}code{font-size:0.85rem;line-height:1.5rem;}kbd{font-size:0.85rem;line-height:1.5rem;}samp{font-size:0.85rem;line-height:1.5rem;}abbr{border-bottom:1px dotted hsla(0,0%,0%,0.5);cursor:help;}acronym{border-bottom:1px dotted hsla(0,0%,0%,0.5);cursor:help;}abbr[title]{border-bottom:1px dotted hsla(0,0%,0%,0.5);cursor:help;text-decoration:none;}thead{text-align:left;}td,th{text-align:left;border-bottom:1px solid hsla(0,0%,0%,0.12);font-feature-settings:tnum;padding-left:1rem;padding-right:1rem;padding-top:0.75rem;padding-bottom:calc(0.75rem - 1px);}th:first-child,td:first-child{padding-left:0;}th:last-child,td:last-child{padding-right:0;}tt,code{background-color:hsla(0,0%,0%,0.04);border-radius:3px;font-family:Consolas,"Roboto Mono","Liberation Mono",Menlo,Courier,monospace;padding:0;padding-top:0.2em;padding-bottom:0.2em;}pre code{background:none;line-height:1.42;}code:before,code:after,tt:before,tt:after{letter-spacing:-0.2em;content:" ";}pre code:before,pre code:after,pre tt:before,pre tt:after{content:"";}</style><style>.demo1-ball{border-radius:99px;background-color:#fff;width:50px;height:50px;border:3px solid #fff;position:absolute;background-size:50px}.hljs-comment,.hljs-quote{color:#998;font-style:italic}.hljs-keyword,.hljs-selector-tag,.hljs-subst{color:#333;font-weight:700}.hljs-literal,.hljs-number,.hljs-tag .hljs-attr,.hljs-template-variable,.hljs-variable{color:teal}.hljs-doctag,.hljs-string{color:#d14}.hljs-section,.hljs-selector-id,.hljs-title{color:#900;font-weight:700}.hljs-subst{font-weight:400}.hljs-class .hljs-title,.hljs-type{color:#458;font-weight:700}.hljs-attribute,.hljs-name,.hljs-tag{color:navy;font-weight:400}.hljs-link,.hljs-regexp{color:#009926}.hljs-bullet,.hljs-symbol{color:#990073}.hljs-built_in,.hljs-builtin-name{color:#0086b3}.hljs-meta{color:#999;font-weight:700}.hljs-deletion{background:#fdd}.hljs-addition{background:#dfd}.hljs-emphasis{font-style:italic}.hljs-strong{font-weight:700}@media only screen and (min-width:700px){.breakpoint-min-width-700{display:block}.breakpoint-max-width-700{display:none}}@media only screen and (max-width:700px){.breakpoint-min-width-700{display:none}.breakpoint-max-width-700{display:block}}</style><style>
+                  a {
+                    color: rgb(40,53,147);
+                  }
+                  .ball-0 {
+                    background-image: url(/postgraphql-docs/docs/some-react-code/0.jpg);
+                  }
+                  .ball-1 {
+                    background-image: url(/postgraphql-docs/docs/some-react-code/1.jpg);
+                  }
+                  .ball-2 {
+                    background-image: url(/postgraphql-docs/docs/some-react-code/2.jpg);
+                  }
+                  .ball-3 {
+                    background-image: url(/postgraphql-docs/docs/some-react-code/3.jpg);
+                  }
+                  .ball-4 {
+                    background-image: url(/postgraphql-docs/docs/some-react-code/4.jpg);
+                  }
+                  .ball-5 {
+                    background-image: url(/postgraphql-docs/docs/some-react-code/5.jpg);
+                  }
+                </style></head><body><div id="react-mount"><div data-reactroot="" data-reactid="1" data-react-checksum="1378492258"><div style="background:rgb(40,53,147);color:rgb(181,186,218);margin-bottom:2.25rem;" data-reactid="2"><div style="max-width:960px;margin-left:auto;margin-right:auto;padding-left:1.125rem;" data-reactid="3"><div style="padding:1.125rem 0;" data-reactid="4"><div style="float:left;margin-left:0%;margin-right:1.694915254237288%;width:32.20338983050847%;clear:none;height:24px;" data-reactid="5"><a style="text-decoration:none;color:rgb(181,186,218);font-size:1.59375rem;" href="/postgraphql-docs/" data-reactid="6">PostGraphQL</a><span style="display:block;clear:both;" data-reactid="7"> </span></div><div style="float:right;margin-left:0%;margin-right:0%;width:66.10169491525423%;clear:none;" data-reactid="8"><a style="float:right;color:rgb(181,186,218);text-decoration:none;margin-left:0.75rem;" href="https://github.com/calebmer/postgraphql" data-reactid="9">GitHub</a><a style="background:rgb(40,53,147);color:rgb(181,186,218);float:right;text-decoration:none;padding-left:0.75rem;padding-right:0.75rem;padding-bottom:1.125rem;margin-bottom:-1.5rem;padding-top:1.5rem;margin-top:-1.5rem;" href="/postgraphql-docs/examples/" data-reactid="10">Examples</a><a style="background:rgb(40,53,147);color:rgb(181,186,218);float:right;text-decoration:none;padding-left:0.75rem;padding-right:0.75rem;padding-bottom:1.125rem;margin-bottom:-1.5rem;padding-top:1.5rem;margin-top:-1.5rem;" href="/postgraphql-docs/api/" data-reactid="11">API</a><a style="background:rgb(40,53,147);color:rgb(181,186,218);float:right;text-decoration:none;padding-left:0.75rem;padding-right:0.75rem;padding-bottom:1.125rem;margin-bottom:-1.5rem;padding-top:1.5rem;margin-top:-1.5rem;" href="/postgraphql-docs/guide/" data-reactid="12">Guide</a><span style="display:block;clear:both;" data-reactid="13"> </span></div><span style="display:block;clear:both;" data-reactid="14"> </span></div><span style="display:block;clear:both;" data-reactid="15"> </span></div></div><div style="max-width:960px;margin-left:auto;margin-right:auto;padding:1.5rem 1.125rem;padding-top:0;" data-reactid="16"><div data-reactid="17"><div class="breakpoint-min-width-700" data-reactid="18"><div style="overflow-y:auto;padding-right:calc(0.75rem - 1px);position:absolute;width:calc(12rem - 1px);border-right:1px solid lightgrey;" data-reactid="19"><ul style="list-style:none;margin-left:0;margin-top:0.75rem;" data-reactid="20"><li style="margin-bottom:0.75rem;" data-reactid="21"><a style="text-decoration:none;" href="/postgraphql-docs/guide/" data-reactid="22">Basic Usage</a></li><li style="margin-bottom:0.75rem;" data-reactid="23"><a style="text-decoration:none;" href="/postgraphql-docs/guide/benefits/" data-reactid="24"><strong data-reactid="25">Benefits</strong></a></li><li style="margin-bottom:0.75rem;" data-reactid="26"><a style="text-decoration:none;" href="/postgraphql-docs/guide/evaluating/" data-reactid="27">Evaluating PostGraphQL For Your Project</a></li><li style="margin-bottom:0.75rem;" data-reactid="28"><a style="text-decoration:none;" href="/postgraphql-docs/guide/library/" data-reactid="29">Using PostGraphQL as a Library</a></li><li style="margin-bottom:0.75rem;" data-reactid="30"><a style="text-decoration:none;" href="/postgraphql-docs/guide/advanced-queries/" data-reactid="31">Advanced Queries</a></li><li style="margin-bottom:0.75rem;" data-reactid="32"><a style="text-decoration:none;" href="/postgraphql-docs/guide/procedures/" data-reactid="33">Procedures</a></li><li style="margin-bottom:0.75rem;" data-reactid="34"><a style="text-decoration:none;" href="/postgraphql-docs/guide/anonymous-role/" data-reactid="35">The Anonymous Role</a></li></ul></div><div style="padding:0 1.5rem;padding-left:calc(12rem + 1.5rem);" data-reactid="36"><div class="markdown" data-reactid="37"><h1 data-reactid="38">Benefits</h1><div data-reactid="39"><p>PostGraphQL uses the joint benefits of PostgreSQL and GraphQL to provide a number of key benefits.</p>
+<h3>Automatic Relation Detection</h3>
+<p>Does your table’s <code>authorId</code> column reference another table? PostGraphQL knows and will give you a field for easily querying that reference.</p>
+<p>A schema like:</p>
+<pre><code class="language-sql"><span class="hljs-keyword">create</span> <span class="hljs-keyword">table</span> post (
+  <span class="hljs-keyword">id</span> <span class="hljs-built_in">serial</span> primary <span class="hljs-keyword">key</span>,
+  author_id <span class="hljs-built_in">int</span> non <span class="hljs-literal">null</span> <span class="hljs-keyword">references</span> <span class="hljs-keyword">user</span>(<span class="hljs-keyword">id</span>),
+  headline <span class="hljs-built_in">text</span>,
+  <span class="hljs-keyword">body</span> <span class="hljs-built_in">text</span>,
+  …
+);
+</code></pre>
+<p>Can query relations like so:</p>
+<pre><code class="language-graphql">{
+  postNodes {
+    nodes {
+      headline
+      body
+      author: userByAuthorId {
+        name
+      }
+    }
+  }
+}
+</code></pre>
+<h3>Custom Mutations and Computed Columns</h3>
+<p>Procedures in PostgreSQL are powerful for writing business logic in your database schema, and PostGraphQL allows you to access those procedures through a GraphQL interface. Create a custom mutation, write an advanced SQL query, or even extend your tables with computed columns! Procedures allow you to write logic for your app in SQL instead of in the client all while being accessible through the GraphQL interface.</p>
+<p>So a search query could be written like this:</p>
+<pre><code class="language-sql"><span class="hljs-keyword">create</span> <span class="hljs-keyword">function</span> search_posts(<span class="hljs-keyword">search</span> <span class="hljs-built_in">text</span>) <span class="hljs-keyword">returns</span> setof post <span class="hljs-keyword">as</span> $$
+  <span class="hljs-keyword">select</span> *
+  <span class="hljs-keyword">from</span> post
+  <span class="hljs-keyword">where</span>
+    headline <span class="hljs-keyword">ilike</span> (<span class="hljs-string">'%'</span> || <span class="hljs-keyword">search</span> || <span class="hljs-string">'%'</span>) <span class="hljs-keyword">or</span>
+    <span class="hljs-keyword">body</span> <span class="hljs-keyword">ilike</span> (<span class="hljs-string">'%'</span> || <span class="hljs-keyword">search</span> || <span class="hljs-string">'%'</span>)
+$$ <span class="hljs-keyword">language</span> <span class="hljs-keyword">sql</span> stable;
+</code></pre>
+<p>And queried through GraphQL like this:</p>
+<pre><code class="language-graphql">{
+  searchPosts(<span class="hljs-name">search:</span> <span class="hljs-string">"Hello world"</span>, first: <span class="hljs-number">5</span>) {
+    pageInfo {
+      hasNextPage
+    }
+    totalCount
+    nodes {
+      headline
+      body
+    }
+  }
+}
+</code></pre>
+<p>For more information, check out our <a href="../procedures/">procedure documentation</a> and our <a href="../advanced-queries/">advanced queries documentation</a>.</p>
+<h3>Fully Documented APIs</h3>
+<p>Introspection of a GraphQL schema is powerful for developer tooling and one element of introspection is that every type in GraphQL has an associated <code>description</code> field. As PostgreSQL allows you to document your database objects, naturally PostGraphQL exposes these documentation comments through GraphQL.</p>
+<p>Documenting PostgreSQL objects with the <a href="http://www.postgresql.org/docs/current/static/sql-comment.html"><code>COMMENT</code></a> command like so:</p>
+<pre><code class="language-sql"><span class="hljs-keyword">create</span> <span class="hljs-keyword">table</span> <span class="hljs-keyword">user</span> (
+  username <span class="hljs-built_in">text</span> non <span class="hljs-literal">null</span> <span class="hljs-keyword">unique</span>,
+  …
+);
+
+<span class="hljs-keyword">comment</span> <span class="hljs-keyword">on</span> <span class="hljs-keyword">table</span> <span class="hljs-keyword">user</span> <span class="hljs-keyword">is</span> <span class="hljs-string">'A human user of the forum.'</span>;
+<span class="hljs-keyword">comment</span> <span class="hljs-keyword">on</span> <span class="hljs-keyword">column</span> user.username <span class="hljs-keyword">is</span> <span class="hljs-string">'A unique name selected by the user to represent them on our site.'</span>;
+</code></pre>
+<p>Will let you reflect on the schema and get the JSON below:</p>
+<pre><code class="language-graphql">{
+  __type(<span class="hljs-name">name:</span> <span class="hljs-string">"User"</span>) { … }
+}
+</code></pre>
+<pre><code class="language-json">{
+  <span class="hljs-attr">"__type"</span>: {
+    <span class="hljs-attr">"name"</span>: <span class="hljs-string">"User"</span>,
+    <span class="hljs-attr">"description"</span>: <span class="hljs-string">"A human user of the forum."</span>,
+    <span class="hljs-attr">"fields"</span>: {
+      <span class="hljs-attr">"username"</span>: {
+        <span class="hljs-attr">"name"</span>: <span class="hljs-string">"username"</span>,
+        <span class="hljs-attr">"description"</span>: <span class="hljs-string">"A unique name selected by the user to represent them on our site."</span>
+      }
+    }
+  }
+}
+</code></pre>
+<h3>UI For Development Comes Standard</h3>
+<p><a href="https://github.com/graphql/graphiql">GraphiQL</a> is a great tool by Facebook to let you interactively explore your data. When development mode is enabled in PostGraphQL, the GraphiQL interface will be <em>automatically</em> displayed at your GraphQL endpoint.</p>
+<p>Just navigate with your browser to the URL printed to your console after starting PostGraphQL and use GraphiQL with your data! Even if you don’t want to use GraphQL in your app, this is a great interface for working with any PostgreSQL database.</p>
+<p>Just remember to use the <code>--development</code> flag when starting PostGraphQL!</p>
+<h3>Token Based Authorization</h3>
+<p>PostGraphQL let’s you use token based authentication with <a href="https://jwt.io">JSON Web Tokens</a> (JWT) to secure your API. It doesn’t make sense to redefine your authentication in the API layer, instead just put your authorization logic in the database schema! With an advanced <a href="http://www.postgresql.org/docs/current/static/sql-grant.html">grants</a> system and <a href="http://www.postgresql.org/docs/current/static/ddl-rowsecurity.html">row level security</a>, authorization in PostgreSQL is more than enough for your needs.</p>
+<p>PostGraphQL follows the <a href="https://github.com/calebmer/postgraphql/blob/master/docs/pg-jwt-spec.md">PostgreSQL JSON Web Token Serialization Specification</a> for serializing JWTs to the database for your use in authorization. The <code>role</code> claim of your JWT will become your PostgreSQL role and all other claims can be found under the <code>jwt.claims</code> namespace (see <a href="https://github.com/calebmer/postgraphql/blob/master/docs/pg-jwt-spec.md#retrieving-claims-in-postgresql">retrieving claims in PostgreSQL</a>).</p>
+<p>To enable token based authorization use the <code>--secret &lt;string&gt;</code> command line argument with a secure string PostGraphQL will use to sign and verify tokens. And if you don’t want authorization, just don’t set the <code>--secret</code> argument and PostGraphQL will ignore all authorization information!</p>
+<h3>Cursor Based Pagination For Free</h3>
+<p>There are some problems with traditional limit/offset pagination and realtime data. For more information on such problems, read <a href="https://medium.com/apollo-stack/understanding-pagination-rest-graphql-and-relay-b10f835549e7#.8ehp4qwsq">this article</a>.</p>
+<p>PostGraphQL not only provides limit/offset pagination, but it also provides cursor based pagination ordering on the column of your choice. Never again skip an item with free cursor based pagination!</p>
+<h3>Relay Specification Compliant</h3>
+<p>You don’t have to use GraphQL with React and Relay, but if you are, PostGraphQL implements the brilliant Relay specifications for GraphQL. Even if you are not using Relay your project will benefit from having these strong, well thought out specifications implemented by PostGraphQL.</p>
+<p>The specific specs PostGraphQL implements are:</p>
+<ul>
+<li><a href="http://facebook.github.io/relay/graphql/objectidentification.htm">Global Object Identification Specification.</a></li>
+<li><a href="http://facebook.github.io/relay/graphql/connections.htm">Cursor Connections Specification.</a></li>
+<li><a href="http://facebook.github.io/relay/graphql/mutations.htm">Input Object Mutations Specification.</a></li>
+</ul>
+</div></div></div></div><div class="breakpoint-max-width-700" data-reactid="40"><strong data-reactid="41">Topics:</strong><!-- react-text: 42 --> <!-- /react-text --><select data-reactid="43"><option value="/postgraphql-docs/guide/" data-reactid="44">Basic Usage</option><option selected="" value="/postgraphql-docs/guide/benefits/" data-reactid="45">Benefits</option><option value="/postgraphql-docs/guide/evaluating/" data-reactid="46">Evaluating PostGraphQL For Your Project</option><option value="/postgraphql-docs/guide/library/" data-reactid="47">Using PostGraphQL as a Library</option><option value="/postgraphql-docs/guide/advanced-queries/" data-reactid="48">Advanced Queries</option><option value="/postgraphql-docs/guide/procedures/" data-reactid="49">Procedures</option><option value="/postgraphql-docs/guide/anonymous-role/" data-reactid="50">The Anonymous Role</option></select><br data-reactid="51"/><br data-reactid="52"/><div class="markdown" data-reactid="53"><h1 data-reactid="54">Benefits</h1><div data-reactid="55"><p>PostGraphQL uses the joint benefits of PostgreSQL and GraphQL to provide a number of key benefits.</p>
+<h3>Automatic Relation Detection</h3>
+<p>Does your table’s <code>authorId</code> column reference another table? PostGraphQL knows and will give you a field for easily querying that reference.</p>
+<p>A schema like:</p>
+<pre><code class="language-sql"><span class="hljs-keyword">create</span> <span class="hljs-keyword">table</span> post (
+  <span class="hljs-keyword">id</span> <span class="hljs-built_in">serial</span> primary <span class="hljs-keyword">key</span>,
+  author_id <span class="hljs-built_in">int</span> non <span class="hljs-literal">null</span> <span class="hljs-keyword">references</span> <span class="hljs-keyword">user</span>(<span class="hljs-keyword">id</span>),
+  headline <span class="hljs-built_in">text</span>,
+  <span class="hljs-keyword">body</span> <span class="hljs-built_in">text</span>,
+  …
+);
+</code></pre>
+<p>Can query relations like so:</p>
+<pre><code class="language-graphql">{
+  postNodes {
+    nodes {
+      headline
+      body
+      author: userByAuthorId {
+        name
+      }
+    }
+  }
+}
+</code></pre>
+<h3>Custom Mutations and Computed Columns</h3>
+<p>Procedures in PostgreSQL are powerful for writing business logic in your database schema, and PostGraphQL allows you to access those procedures through a GraphQL interface. Create a custom mutation, write an advanced SQL query, or even extend your tables with computed columns! Procedures allow you to write logic for your app in SQL instead of in the client all while being accessible through the GraphQL interface.</p>
+<p>So a search query could be written like this:</p>
+<pre><code class="language-sql"><span class="hljs-keyword">create</span> <span class="hljs-keyword">function</span> search_posts(<span class="hljs-keyword">search</span> <span class="hljs-built_in">text</span>) <span class="hljs-keyword">returns</span> setof post <span class="hljs-keyword">as</span> $$
+  <span class="hljs-keyword">select</span> *
+  <span class="hljs-keyword">from</span> post
+  <span class="hljs-keyword">where</span>
+    headline <span class="hljs-keyword">ilike</span> (<span class="hljs-string">'%'</span> || <span class="hljs-keyword">search</span> || <span class="hljs-string">'%'</span>) <span class="hljs-keyword">or</span>
+    <span class="hljs-keyword">body</span> <span class="hljs-keyword">ilike</span> (<span class="hljs-string">'%'</span> || <span class="hljs-keyword">search</span> || <span class="hljs-string">'%'</span>)
+$$ <span class="hljs-keyword">language</span> <span class="hljs-keyword">sql</span> stable;
+</code></pre>
+<p>And queried through GraphQL like this:</p>
+<pre><code class="language-graphql">{
+  searchPosts(<span class="hljs-name">search:</span> <span class="hljs-string">"Hello world"</span>, first: <span class="hljs-number">5</span>) {
+    pageInfo {
+      hasNextPage
+    }
+    totalCount
+    nodes {
+      headline
+      body
+    }
+  }
+}
+</code></pre>
+<p>For more information, check out our <a href="../procedures/">procedure documentation</a> and our <a href="../advanced-queries/">advanced queries documentation</a>.</p>
+<h3>Fully Documented APIs</h3>
+<p>Introspection of a GraphQL schema is powerful for developer tooling and one element of introspection is that every type in GraphQL has an associated <code>description</code> field. As PostgreSQL allows you to document your database objects, naturally PostGraphQL exposes these documentation comments through GraphQL.</p>
+<p>Documenting PostgreSQL objects with the <a href="http://www.postgresql.org/docs/current/static/sql-comment.html"><code>COMMENT</code></a> command like so:</p>
+<pre><code class="language-sql"><span class="hljs-keyword">create</span> <span class="hljs-keyword">table</span> <span class="hljs-keyword">user</span> (
+  username <span class="hljs-built_in">text</span> non <span class="hljs-literal">null</span> <span class="hljs-keyword">unique</span>,
+  …
+);
+
+<span class="hljs-keyword">comment</span> <span class="hljs-keyword">on</span> <span class="hljs-keyword">table</span> <span class="hljs-keyword">user</span> <span class="hljs-keyword">is</span> <span class="hljs-string">'A human user of the forum.'</span>;
+<span class="hljs-keyword">comment</span> <span class="hljs-keyword">on</span> <span class="hljs-keyword">column</span> user.username <span class="hljs-keyword">is</span> <span class="hljs-string">'A unique name selected by the user to represent them on our site.'</span>;
+</code></pre>
+<p>Will let you reflect on the schema and get the JSON below:</p>
+<pre><code class="language-graphql">{
+  __type(<span class="hljs-name">name:</span> <span class="hljs-string">"User"</span>) { … }
+}
+</code></pre>
+<pre><code class="language-json">{
+  <span class="hljs-attr">"__type"</span>: {
+    <span class="hljs-attr">"name"</span>: <span class="hljs-string">"User"</span>,
+    <span class="hljs-attr">"description"</span>: <span class="hljs-string">"A human user of the forum."</span>,
+    <span class="hljs-attr">"fields"</span>: {
+      <span class="hljs-attr">"username"</span>: {
+        <span class="hljs-attr">"name"</span>: <span class="hljs-string">"username"</span>,
+        <span class="hljs-attr">"description"</span>: <span class="hljs-string">"A unique name selected by the user to represent them on our site."</span>
+      }
+    }
+  }
+}
+</code></pre>
+<h3>UI For Development Comes Standard</h3>
+<p><a href="https://github.com/graphql/graphiql">GraphiQL</a> is a great tool by Facebook to let you interactively explore your data. When development mode is enabled in PostGraphQL, the GraphiQL interface will be <em>automatically</em> displayed at your GraphQL endpoint.</p>
+<p>Just navigate with your browser to the URL printed to your console after starting PostGraphQL and use GraphiQL with your data! Even if you don’t want to use GraphQL in your app, this is a great interface for working with any PostgreSQL database.</p>
+<p>Just remember to use the <code>--development</code> flag when starting PostGraphQL!</p>
+<h3>Token Based Authorization</h3>
+<p>PostGraphQL let’s you use token based authentication with <a href="https://jwt.io">JSON Web Tokens</a> (JWT) to secure your API. It doesn’t make sense to redefine your authentication in the API layer, instead just put your authorization logic in the database schema! With an advanced <a href="http://www.postgresql.org/docs/current/static/sql-grant.html">grants</a> system and <a href="http://www.postgresql.org/docs/current/static/ddl-rowsecurity.html">row level security</a>, authorization in PostgreSQL is more than enough for your needs.</p>
+<p>PostGraphQL follows the <a href="https://github.com/calebmer/postgraphql/blob/master/docs/pg-jwt-spec.md">PostgreSQL JSON Web Token Serialization Specification</a> for serializing JWTs to the database for your use in authorization. The <code>role</code> claim of your JWT will become your PostgreSQL role and all other claims can be found under the <code>jwt.claims</code> namespace (see <a href="https://github.com/calebmer/postgraphql/blob/master/docs/pg-jwt-spec.md#retrieving-claims-in-postgresql">retrieving claims in PostgreSQL</a>).</p>
+<p>To enable token based authorization use the <code>--secret &lt;string&gt;</code> command line argument with a secure string PostGraphQL will use to sign and verify tokens. And if you don’t want authorization, just don’t set the <code>--secret</code> argument and PostGraphQL will ignore all authorization information!</p>
+<h3>Cursor Based Pagination For Free</h3>
+<p>There are some problems with traditional limit/offset pagination and realtime data. For more information on such problems, read <a href="https://medium.com/apollo-stack/understanding-pagination-rest-graphql-and-relay-b10f835549e7#.8ehp4qwsq">this article</a>.</p>
+<p>PostGraphQL not only provides limit/offset pagination, but it also provides cursor based pagination ordering on the column of your choice. Never again skip an item with free cursor based pagination!</p>
+<h3>Relay Specification Compliant</h3>
+<p>You don’t have to use GraphQL with React and Relay, but if you are, PostGraphQL implements the brilliant Relay specifications for GraphQL. Even if you are not using Relay your project will benefit from having these strong, well thought out specifications implemented by PostGraphQL.</p>
+<p>The specific specs PostGraphQL implements are:</p>
+<ul>
+<li><a href="http://facebook.github.io/relay/graphql/objectidentification.htm">Global Object Identification Specification.</a></li>
+<li><a href="http://facebook.github.io/relay/graphql/connections.htm">Cursor Connections Specification.</a></li>
+<li><a href="http://facebook.github.io/relay/graphql/mutations.htm">Input Object Mutations Specification.</a></li>
+</ul>
+</div></div></div></div><span style="display:block;clear:both;" data-reactid="56"> </span></div></div></div><script src="/postgraphql-docs/bundle.js?t=1473678537470"></script></body></html>

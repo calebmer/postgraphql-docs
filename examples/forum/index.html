@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+ <html lang="en"><head><meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>Forum Example | PostGraphQL</title><style id="typography.js">html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:0}article,aside,details,figcaption,figure,footer,header,main,menu,nav,section,summary{display:block}audio,canvas,progress,video{display:inline-block}audio:not([controls]){display:none;height:0}progress{vertical-align:baseline}[hidden],template{display:none}a{background-color:transparent;-webkit-text-decoration-skip:objects}a:active,a:hover{outline-width:0}abbr[title]{border-bottom:none;text-decoration:underline;text-decoration:underline dotted}b,strong{font-weight:inherit;font-weight:bolder}dfn{font-style:italic}h1{font-size:2em;margin:.67em 0}mark{background-color:#ff0;color:#000}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}img{border-style:none}svg:not(:root){overflow:hidden}code,kbd,pre,samp{font-family:monospace,monospace;font-size:1em}figure{margin:1em 40px}hr{box-sizing:content-box;height:0;overflow:visible}button,input,optgroup,select,textarea{font:inherit;margin:0}optgroup{font-weight:700}button,input{overflow:visible}button,select{text-transform:none}[type=reset],[type=submit],button,html [type=button]{-webkit-appearance:button}[type=button]::-moz-focus-inner,[type=reset]::-moz-focus-inner,[type=submit]::-moz-focus-inner,button::-moz-focus-inner{border-style:none;padding:0}[type=button]:-moz-focusring,[type=reset]:-moz-focusring,[type=submit]:-moz-focusring,button:-moz-focusring{outline:1px dotted ButtonText}fieldset{border:1px solid silver;margin:0 2px;padding:.35em .625em .75em}legend{box-sizing:border-box;color:inherit;display:table;max-width:100%;padding:0;white-space:normal}textarea{overflow:auto}[type=checkbox],[type=radio]{box-sizing:border-box;padding:0}[type=number]::-webkit-inner-spin-button,[type=number]::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}[type=search]::-webkit-search-cancel-button,[type=search]::-webkit-search-decoration{-webkit-appearance:none}::-webkit-input-placeholder{color:inherit;opacity:.54}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}html{font-size:100%;line-height:1.5em;box-sizing:border-box;overflow-y:scroll;}*{box-sizing:inherit;}*:before{box-sizing:inherit;}*:after{box-sizing:inherit;}body{color:hsla(0,0%,0%,0.8);font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif;font-weight:400;word-wrap:break-word;}img{max-width:100%;margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.5rem;}h1{margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.5rem;color:hsla(0,0%,0%,0.8);font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif;font-weight:700;text-rendering:optimizeLegibility;font-size:1.618rem;line-height:2.25rem;}h2{margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.5rem;color:hsla(0,0%,0%,0.8);font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif;font-weight:700;text-rendering:optimizeLegibility;font-size:1.33471rem;line-height:2.25rem;}h3{margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.5rem;color:hsla(0,0%,0%,0.8);font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif;font-weight:700;text-rendering:optimizeLegibility;font-size:1.21225rem;line-height:1.5rem;}h4{margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.5rem;color:hsla(0,0%,0%,0.8);font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif;font-weight:700;text-rendering:optimizeLegibility;font-size:1rem;line-height:1.5rem;}h5{margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.5rem;color:hsla(0,0%,0%,0.8);font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif;font-weight:700;text-rendering:optimizeLegibility;font-size:0.90825rem;line-height:1.5rem;}h6{margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.5rem;color:hsla(0,0%,0%,0.8);font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif;font-weight:700;text-rendering:optimizeLegibility;font-size:0.86558rem;line-height:1.5rem;}hgroup{margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.5rem;}ul{margin-left:1.5rem;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.5rem;list-style-position:outside;list-style-image:none;}ol{margin-left:1.5rem;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.5rem;list-style-position:outside;list-style-image:none;}dl{margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.5rem;}dd{margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.5rem;}p{margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.5rem;}figure{margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.5rem;}pre{margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.5rem;font-size:0.85rem;line-height:1.42;background:hsla(0,0%,0%,0.04);border-radius:3px;overflow:auto;padding:1.5rem;}table{margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.5rem;font-size:1rem;line-height:1.5rem;border-collapse:collapse;width:100%;}fieldset{margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.5rem;}blockquote{margin-left:1.5rem;margin-right:1.5rem;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.5rem;}form{margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.5rem;}noscript{margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.5rem;}iframe{margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.5rem;}hr{margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:calc(1.5rem - 1px);background:hsla(0,0%,0%,0.2);border:none;height:1px;}address{margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.5rem;}b{font-weight:700;}strong{font-weight:700;}dt{font-weight:700;}th{font-weight:700;}li{margin-bottom:calc(1.5rem / 2);}ol li{padding-left:0;}ul li{padding-left:0;}li > ol{margin-left:1.5rem;margin-bottom:calc(1.5rem / 2);margin-top:calc(1.5rem / 2);}li > ul{margin-left:1.5rem;margin-bottom:calc(1.5rem / 2);margin-top:calc(1.5rem / 2);}code{font-size:0.85rem;line-height:1.5rem;}kbd{font-size:0.85rem;line-height:1.5rem;}samp{font-size:0.85rem;line-height:1.5rem;}abbr{border-bottom:1px dotted hsla(0,0%,0%,0.5);cursor:help;}acronym{border-bottom:1px dotted hsla(0,0%,0%,0.5);cursor:help;}abbr[title]{border-bottom:1px dotted hsla(0,0%,0%,0.5);cursor:help;text-decoration:none;}thead{text-align:left;}td,th{text-align:left;border-bottom:1px solid hsla(0,0%,0%,0.12);font-feature-settings:tnum;padding-left:1rem;padding-right:1rem;padding-top:0.75rem;padding-bottom:calc(0.75rem - 1px);}th:first-child,td:first-child{padding-left:0;}th:last-child,td:last-child{padding-right:0;}tt,code{background-color:hsla(0,0%,0%,0.04);border-radius:3px;font-family:Consolas,"Roboto Mono","Liberation Mono",Menlo,Courier,monospace;padding:0;padding-top:0.2em;padding-bottom:0.2em;}pre code{background:none;line-height:1.42;}code:before,code:after,tt:before,tt:after{letter-spacing:-0.2em;content:" ";}pre code:before,pre code:after,pre tt:before,pre tt:after{content:"";}</style><style>.demo1-ball{border-radius:99px;background-color:#fff;width:50px;height:50px;border:3px solid #fff;position:absolute;background-size:50px}.hljs-comment,.hljs-quote{color:#998;font-style:italic}.hljs-keyword,.hljs-selector-tag,.hljs-subst{color:#333;font-weight:700}.hljs-literal,.hljs-number,.hljs-tag .hljs-attr,.hljs-template-variable,.hljs-variable{color:teal}.hljs-doctag,.hljs-string{color:#d14}.hljs-section,.hljs-selector-id,.hljs-title{color:#900;font-weight:700}.hljs-subst{font-weight:400}.hljs-class .hljs-title,.hljs-type{color:#458;font-weight:700}.hljs-attribute,.hljs-name,.hljs-tag{color:navy;font-weight:400}.hljs-link,.hljs-regexp{color:#009926}.hljs-bullet,.hljs-symbol{color:#990073}.hljs-built_in,.hljs-builtin-name{color:#0086b3}.hljs-meta{color:#999;font-weight:700}.hljs-deletion{background:#fdd}.hljs-addition{background:#dfd}.hljs-emphasis{font-style:italic}.hljs-strong{font-weight:700}@media only screen and (min-width:700px){.breakpoint-min-width-700{display:block}.breakpoint-max-width-700{display:none}}@media only screen and (max-width:700px){.breakpoint-min-width-700{display:none}.breakpoint-max-width-700{display:block}}</style><style>
+                  a {
+                    color: rgb(40,53,147);
+                  }
+                  .ball-0 {
+                    background-image: url(/postgraphql-docs/docs/some-react-code/0.jpg);
+                  }
+                  .ball-1 {
+                    background-image: url(/postgraphql-docs/docs/some-react-code/1.jpg);
+                  }
+                  .ball-2 {
+                    background-image: url(/postgraphql-docs/docs/some-react-code/2.jpg);
+                  }
+                  .ball-3 {
+                    background-image: url(/postgraphql-docs/docs/some-react-code/3.jpg);
+                  }
+                  .ball-4 {
+                    background-image: url(/postgraphql-docs/docs/some-react-code/4.jpg);
+                  }
+                  .ball-5 {
+                    background-image: url(/postgraphql-docs/docs/some-react-code/5.jpg);
+                  }
+                </style></head><body><div id="react-mount"><div data-reactroot="" data-reactid="1" data-react-checksum="1162412851"><div style="background:rgb(40,53,147);color:rgb(181,186,218);margin-bottom:2.25rem;" data-reactid="2"><div style="max-width:960px;margin-left:auto;margin-right:auto;padding-left:1.125rem;" data-reactid="3"><div style="padding:1.125rem 0;" data-reactid="4"><div style="float:left;margin-left:0%;margin-right:1.694915254237288%;width:32.20338983050847%;clear:none;height:24px;" data-reactid="5"><a style="text-decoration:none;color:rgb(181,186,218);font-size:1.59375rem;" href="/postgraphql-docs/" data-reactid="6">PostGraphQL</a><span style="display:block;clear:both;" data-reactid="7"> </span></div><div style="float:right;margin-left:0%;margin-right:0%;width:66.10169491525423%;clear:none;" data-reactid="8"><a style="float:right;color:rgb(181,186,218);text-decoration:none;margin-left:0.75rem;" href="https://github.com/calebmer/postgraphql" data-reactid="9">GitHub</a><a style="background:rgb(0,32,121);color:rgb(172,182,211);float:right;text-decoration:none;padding-left:0.75rem;padding-right:0.75rem;padding-bottom:1.125rem;margin-bottom:-1.5rem;padding-top:1.5rem;margin-top:-1.5rem;" href="/postgraphql-docs/examples/" data-reactid="10">Examples</a><a style="background:rgb(40,53,147);color:rgb(181,186,218);float:right;text-decoration:none;padding-left:0.75rem;padding-right:0.75rem;padding-bottom:1.125rem;margin-bottom:-1.5rem;padding-top:1.5rem;margin-top:-1.5rem;" href="/postgraphql-docs/api/" data-reactid="11">API</a><a style="background:rgb(40,53,147);color:rgb(181,186,218);float:right;text-decoration:none;padding-left:0.75rem;padding-right:0.75rem;padding-bottom:1.125rem;margin-bottom:-1.5rem;padding-top:1.5rem;margin-top:-1.5rem;" href="/postgraphql-docs/guide/" data-reactid="12">Guide</a><span style="display:block;clear:both;" data-reactid="13"> </span></div><span style="display:block;clear:both;" data-reactid="14"> </span></div><span style="display:block;clear:both;" data-reactid="15"> </span></div></div><div style="max-width:960px;margin-left:auto;margin-right:auto;padding:1.5rem 1.125rem;padding-top:0;" data-reactid="16"><div data-reactid="17"><div class="breakpoint-min-width-700" data-reactid="18"><div style="overflow-y:auto;padding-right:calc(0.75rem - 1px);position:absolute;width:calc(12rem - 1px);border-right:1px solid lightgrey;" data-reactid="19"><ul style="list-style:none;margin-left:0;margin-top:0.75rem;" data-reactid="20"><li style="margin-bottom:0.75rem;" data-reactid="21"><a style="text-decoration:none;" href="/postgraphql-docs/examples/kitchen-sink/" data-reactid="22">Kitchen Sink Example</a></li><li style="margin-bottom:0.75rem;" data-reactid="23"><a style="text-decoration:none;" href="/postgraphql-docs/examples/forum/" data-reactid="24"><strong data-reactid="25">Forum Example</strong></a></li></ul></div><div style="padding:0 1.5rem;padding-left:calc(12rem + 1.5rem);" data-reactid="26"><div class="markdown" data-reactid="27"><h1 data-reactid="28">Forum Example</h1><div data-reactid="29"><p>This directory contains an example PostgreSQL schema which will work with PostGraphQL. The schema used is contained in the <code>schema.sql</code> file, if you want to take a look it is well documented.</p>
+<p>When running the <code>schema.sql</code> file on your PostgreSQL database everything will be created in the <code>forum_example</code> schema.</p>
+<h2>Installation</h2>
+<p>Somehow you need to download this directory, do it however you like but we’ll go over how to do it with git here.</p>
+<pre><code class="language-bash">git <span class="hljs-built_in">clone</span> https://github.com/calebmer/postgraphql.git
+<span class="hljs-built_in">cd</span> postgraphql/examples/forum
+</code></pre>
+<h2>Running</h2>
+<p>Once you are in this directory and have checked to make sure PostgreSQL is running on port 5432, run the following:</p>
+<pre><code class="language-bash">npm install
+psql <span class="hljs-_">-f</span> schema.sql
+postgraphql postgres://localhost:5432 --schema forum_example --development
+</code></pre>
+<p>This will run the SQL in <code>schema.sql</code> on your default database and start PostGraphQL. Navigate to the URL printed in your console and you should see GraphiQL. Use it to navigate the generated documentation for the GraphQL server.</p>
+<p>In some situations, you might need to change the <code>psql</code> and <code>postgraphql</code> commands to better reflect your database environment. For example, you might need to change <code>postgres://localhost:5432</code> to <code>postgres://user:pass@localhost:5432</code> if your database requires authentication.</p>
+<h2>Sample queries</h2>
+<p>To get a post by ID:</p>
+<pre><code class="language-graphql">{
+  post(<span class="hljs-name">id:</span> <span class="hljs-string">"YXJ0aXN0OjE="</span>) {
+    id, headline
+  }
+}
+</code></pre>
+<p>To get a list of all posts:</p>
+<pre><code class="language-graphql">{
+  postNodes {
+    nodes {
+      id, headline
+    }
+  }
+}
+</code></pre>
+<h2><a name="schema"></a>Schema</h2>
+<pre><code class="language-sql"><span class="hljs-comment">-- We begin a transaction so that if any SQL statement fails, none of the</span>
+<span class="hljs-comment">-- changes will be applied.</span>
+<span class="hljs-keyword">begin</span>;
+
+<span class="hljs-comment">-- We want to cryptographically hash passwords, therefore create this</span>
+<span class="hljs-comment">-- extension.</span>
+<span class="hljs-keyword">create</span> extension <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> <span class="hljs-keyword">exists</span> pgcrypto;
+
+<span class="hljs-comment">-- Create the schema we are going to use.</span>
+<span class="hljs-keyword">create</span> <span class="hljs-keyword">schema</span> forum_example;
+
+<span class="hljs-comment">-- Create a schema to host the utilities for our schema. The reason it is in</span>
+<span class="hljs-comment">-- another schema is so that it can be private.</span>
+<span class="hljs-keyword">create</span> <span class="hljs-keyword">schema</span> forum_example_utils;
+
+<span class="hljs-comment">-- By setting the `search_path`, whenever we create something in the default</span>
+<span class="hljs-comment">-- namespace it is actually created in the `forum_example` schema.</span>
+<span class="hljs-comment">--</span>
+<span class="hljs-comment">-- For example, this lets us write `create table person …` instead of</span>
+<span class="hljs-comment">-- `create table forum_example.person …`.</span>
+<span class="hljs-keyword">set</span> search_path = forum_example, forum_example_utils, <span class="hljs-keyword">public</span>;
+
+<span class="hljs-comment">-------------------------------------------------------------------------------</span>
+<span class="hljs-comment">-- Public Tables</span>
+
+<span class="hljs-keyword">create</span> <span class="hljs-keyword">table</span> person (
+  <span class="hljs-keyword">id</span>               <span class="hljs-built_in">serial</span> <span class="hljs-keyword">not</span> <span class="hljs-literal">null</span> primary <span class="hljs-keyword">key</span>,
+  given_name       <span class="hljs-built_in">varchar</span>(<span class="hljs-number">64</span>) <span class="hljs-keyword">not</span> <span class="hljs-literal">null</span>,
+  family_name      <span class="hljs-built_in">varchar</span>(<span class="hljs-number">64</span>),
+  about            <span class="hljs-built_in">text</span>,
+  created_at       <span class="hljs-keyword">timestamp</span>,
+  updated_at       <span class="hljs-keyword">timestamp</span>
+);
+
+<span class="hljs-keyword">comment</span> <span class="hljs-keyword">on</span> <span class="hljs-keyword">table</span> person <span class="hljs-keyword">is</span> <span class="hljs-string">'A user of the forum.'</span>;
+<span class="hljs-keyword">comment</span> <span class="hljs-keyword">on</span> <span class="hljs-keyword">column</span> person.id <span class="hljs-keyword">is</span> <span class="hljs-string">'The primary key for the person.'</span>;
+<span class="hljs-keyword">comment</span> <span class="hljs-keyword">on</span> <span class="hljs-keyword">column</span> person.given_name <span class="hljs-keyword">is</span> <span class="hljs-string">'The person’s first name.'</span>;
+<span class="hljs-keyword">comment</span> <span class="hljs-keyword">on</span> <span class="hljs-keyword">column</span> person.family_name <span class="hljs-keyword">is</span> <span class="hljs-string">'The person’s last name.'</span>;
+<span class="hljs-keyword">comment</span> <span class="hljs-keyword">on</span> <span class="hljs-keyword">column</span> person.about <span class="hljs-keyword">is</span> <span class="hljs-string">'A short description about the user, written by the user.'</span>;
+<span class="hljs-keyword">comment</span> <span class="hljs-keyword">on</span> <span class="hljs-keyword">column</span> person.created_at <span class="hljs-keyword">is</span> <span class="hljs-string">'The time this person was created.'</span>;
+<span class="hljs-keyword">comment</span> <span class="hljs-keyword">on</span> <span class="hljs-keyword">column</span> person.updated_at <span class="hljs-keyword">is</span> <span class="hljs-string">'The latest time this person was updated.'</span>;
+
+<span class="hljs-keyword">create</span> <span class="hljs-keyword">type</span> post_topic <span class="hljs-keyword">as</span> enum (<span class="hljs-string">'discussion'</span>, <span class="hljs-string">'inspiration'</span>, <span class="hljs-string">'help'</span>);
+
+<span class="hljs-keyword">create</span> <span class="hljs-keyword">table</span> post (
+  <span class="hljs-keyword">id</span>               <span class="hljs-built_in">serial</span> <span class="hljs-keyword">not</span> <span class="hljs-literal">null</span> primary <span class="hljs-keyword">key</span>,
+  author_id        <span class="hljs-built_in">int</span> <span class="hljs-keyword">not</span> <span class="hljs-literal">null</span> <span class="hljs-keyword">references</span> person(<span class="hljs-keyword">id</span>),
+  headline         <span class="hljs-built_in">text</span> <span class="hljs-keyword">not</span> <span class="hljs-literal">null</span>,
+  topic            post_topic,
+  <span class="hljs-keyword">body</span>             <span class="hljs-built_in">text</span>,
+  created_at       <span class="hljs-keyword">timestamp</span>,
+  updated_at       <span class="hljs-keyword">timestamp</span>
+);
+
+<span class="hljs-keyword">comment</span> <span class="hljs-keyword">on</span> <span class="hljs-keyword">table</span> post <span class="hljs-keyword">is</span> <span class="hljs-string">'A forum post written by a user.'</span>;
+<span class="hljs-keyword">comment</span> <span class="hljs-keyword">on</span> <span class="hljs-keyword">column</span> post.id <span class="hljs-keyword">is</span> <span class="hljs-string">'The primary key for the post.'</span>;
+<span class="hljs-keyword">comment</span> <span class="hljs-keyword">on</span> <span class="hljs-keyword">column</span> post.headline <span class="hljs-keyword">is</span> <span class="hljs-string">'The title written by the user.'</span>;
+<span class="hljs-keyword">comment</span> <span class="hljs-keyword">on</span> <span class="hljs-keyword">column</span> post.author_id <span class="hljs-keyword">is</span> <span class="hljs-string">'The id of the author user.'</span>;
+<span class="hljs-keyword">comment</span> <span class="hljs-keyword">on</span> <span class="hljs-keyword">column</span> post.topic <span class="hljs-keyword">is</span> <span class="hljs-string">'The topic this has been posted in.'</span>;
+<span class="hljs-keyword">comment</span> <span class="hljs-keyword">on</span> <span class="hljs-keyword">column</span> post.body <span class="hljs-keyword">is</span> <span class="hljs-string">'The main body text of our post.'</span>;
+<span class="hljs-keyword">comment</span> <span class="hljs-keyword">on</span> <span class="hljs-keyword">column</span> post.created_at <span class="hljs-keyword">is</span> <span class="hljs-string">'The time this post was created.'</span>;
+<span class="hljs-keyword">comment</span> <span class="hljs-keyword">on</span> <span class="hljs-keyword">column</span> post.updated_at <span class="hljs-keyword">is</span> <span class="hljs-string">'The latest time this post was updated.'</span>;
+
+<span class="hljs-comment">-------------------------------------------------------------------------------</span>
+<span class="hljs-comment">-- Private Tables</span>
+
+<span class="hljs-keyword">create</span> <span class="hljs-keyword">table</span> forum_example_utils.person_account (
+  person_id        <span class="hljs-built_in">int</span> <span class="hljs-keyword">not</span> <span class="hljs-literal">null</span> primary <span class="hljs-keyword">key</span>,
+  email            <span class="hljs-built_in">varchar</span> <span class="hljs-keyword">not</span> <span class="hljs-literal">null</span> <span class="hljs-keyword">unique</span> <span class="hljs-keyword">check</span> (email ~* <span class="hljs-string">'^.+@.+\..+$'</span>),
+  pass_hash        <span class="hljs-built_in">char</span>(<span class="hljs-number">60</span>) <span class="hljs-keyword">not</span> <span class="hljs-literal">null</span>
+);
+
+<span class="hljs-keyword">comment</span> <span class="hljs-keyword">on</span> <span class="hljs-keyword">table</span> person_account <span class="hljs-keyword">is</span> <span class="hljs-string">'Private information about a person’s account.'</span>;
+<span class="hljs-keyword">comment</span> <span class="hljs-keyword">on</span> <span class="hljs-keyword">column</span> person_account.person_id <span class="hljs-keyword">is</span> <span class="hljs-string">'The id of the person associated with this account.'</span>;
+<span class="hljs-keyword">comment</span> <span class="hljs-keyword">on</span> <span class="hljs-keyword">column</span> person_account.email <span class="hljs-keyword">is</span> <span class="hljs-string">'The email address of the person.'</span>;
+<span class="hljs-keyword">comment</span> <span class="hljs-keyword">on</span> <span class="hljs-keyword">column</span> person_account.pass_hash <span class="hljs-keyword">is</span> <span class="hljs-string">'An opaque hash of the person’s password.'</span>;
+
+<span class="hljs-comment">-------------------------------------------------------------------------------</span>
+<span class="hljs-comment">-- Query Procedures</span>
+
+<span class="hljs-comment">-- Computes the full name for a person using the person’s `given_name` and a</span>
+<span class="hljs-comment">-- `family_name`.</span>
+<span class="hljs-keyword">create</span> <span class="hljs-keyword">function</span> person_full_name(person) <span class="hljs-keyword">returns</span> <span class="hljs-built_in">varchar</span> <span class="hljs-keyword">as</span> $$
+  <span class="hljs-keyword">select</span> $<span class="hljs-number">1.</span>given_name || <span class="hljs-string">' '</span> || $<span class="hljs-number">1.</span>family_name
+$$ <span class="hljs-keyword">language</span> <span class="hljs-keyword">sql</span>
+stable;
+
+<span class="hljs-keyword">comment</span> <span class="hljs-keyword">on</span> <span class="hljs-keyword">function</span> person_full_name(person) <span class="hljs-keyword">is</span> <span class="hljs-string">'A person’s full name including their first and last name.'</span>;
+
+<span class="hljs-comment">-- Fetches and returns the latest post authored by our person.</span>
+<span class="hljs-keyword">create</span> <span class="hljs-keyword">function</span> person_latest_post(person) <span class="hljs-keyword">returns</span> post <span class="hljs-keyword">as</span> $$
+  <span class="hljs-keyword">select</span> *
+  <span class="hljs-keyword">from</span> post
+  <span class="hljs-keyword">where</span> author_id = $<span class="hljs-number">1.</span><span class="hljs-keyword">id</span>
+  <span class="hljs-keyword">order</span> <span class="hljs-keyword">by</span> created_at <span class="hljs-keyword">desc</span>
+  <span class="hljs-keyword">limit</span> <span class="hljs-number">1</span>
+$$ <span class="hljs-keyword">language</span> <span class="hljs-keyword">sql</span>
+stable
+<span class="hljs-keyword">set</span> search_path <span class="hljs-keyword">from</span> <span class="hljs-keyword">current</span>;
+
+<span class="hljs-keyword">comment</span> <span class="hljs-keyword">on</span> <span class="hljs-keyword">function</span> person_latest_post(person) <span class="hljs-keyword">is</span> <span class="hljs-string">'Get’s the latest post written by the person.'</span>;
+
+<span class="hljs-comment">-- Truncates the body with a given length and a given omission character. The</span>
+<span class="hljs-comment">-- reason we don’t use defaults is because PostGraphQL will always send three</span>
+<span class="hljs-comment">-- parameters and if one parameter is null, the default won’t be used.</span>
+<span class="hljs-keyword">create</span> <span class="hljs-keyword">function</span> post_summary(
+  post,
+  <span class="hljs-keyword">length</span> <span class="hljs-built_in">int</span>,
+  omission <span class="hljs-built_in">varchar</span>
+) <span class="hljs-keyword">returns</span> <span class="hljs-built_in">text</span> <span class="hljs-keyword">as</span> $$
+  <span class="hljs-keyword">select</span> <span class="hljs-keyword">case</span>
+    <span class="hljs-keyword">when</span> $<span class="hljs-number">1.</span><span class="hljs-keyword">body</span> <span class="hljs-keyword">is</span> <span class="hljs-literal">null</span> <span class="hljs-keyword">then</span> <span class="hljs-literal">null</span>
+    <span class="hljs-keyword">else</span> <span class="hljs-keyword">substring</span>($<span class="hljs-number">1.</span><span class="hljs-keyword">body</span> <span class="hljs-keyword">from</span> <span class="hljs-number">0</span> <span class="hljs-keyword">for</span> <span class="hljs-keyword">coalesce</span>(<span class="hljs-keyword">length</span>, <span class="hljs-number">50</span>)) || <span class="hljs-keyword">coalesce</span>(omission, <span class="hljs-string">'…'</span>)
+  <span class="hljs-keyword">end</span>
+$$ <span class="hljs-keyword">language</span> <span class="hljs-keyword">sql</span>
+stable;
+
+<span class="hljs-keyword">comment</span> <span class="hljs-keyword">on</span> <span class="hljs-keyword">function</span> post_summary(post, <span class="hljs-built_in">int</span>, <span class="hljs-built_in">varchar</span>) <span class="hljs-keyword">is</span> <span class="hljs-string">'A truncated version of the body for summaries.'</span>;
+
+<span class="hljs-comment">-- A procedure to search the headline and body of all posts using a given</span>
+<span class="hljs-comment">-- search term.</span>
+<span class="hljs-keyword">create</span> <span class="hljs-keyword">function</span> search_posts(<span class="hljs-keyword">search</span> <span class="hljs-built_in">varchar</span>) <span class="hljs-keyword">returns</span> setof post <span class="hljs-keyword">as</span> $$
+  <span class="hljs-keyword">select</span> * <span class="hljs-keyword">from</span> post <span class="hljs-keyword">where</span> headline <span class="hljs-keyword">ilike</span> (<span class="hljs-string">'%'</span> || <span class="hljs-keyword">search</span> || <span class="hljs-string">'%'</span>) <span class="hljs-keyword">or</span> <span class="hljs-keyword">body</span> <span class="hljs-keyword">ilike</span> (<span class="hljs-string">'%'</span> || <span class="hljs-keyword">search</span> || <span class="hljs-string">'%'</span>)
+$$ <span class="hljs-keyword">language</span> <span class="hljs-keyword">sql</span>
+stable
+<span class="hljs-keyword">set</span> search_path <span class="hljs-keyword">from</span> <span class="hljs-keyword">current</span>;
+
+<span class="hljs-keyword">comment</span> <span class="hljs-keyword">on</span> <span class="hljs-keyword">function</span> search_posts(<span class="hljs-built_in">varchar</span>) <span class="hljs-keyword">is</span> <span class="hljs-string">'Returns posts containing a given search term.'</span>;
+
+<span class="hljs-comment">-------------------------------------------------------------------------------</span>
+<span class="hljs-comment">-- Mutation Procedures</span>
+
+<span class="hljs-comment">-- Registers a person in our forum with a few key parameters creating a</span>
+<span class="hljs-comment">-- `person` row and an associated `person_account` row.</span>
+<span class="hljs-keyword">create</span> <span class="hljs-keyword">function</span> register_person(
+  given_name <span class="hljs-built_in">varchar</span>,
+  family_name <span class="hljs-built_in">varchar</span>,
+  email <span class="hljs-built_in">varchar</span>,
+  <span class="hljs-keyword">password</span> <span class="hljs-built_in">varchar</span>
+) <span class="hljs-keyword">returns</span> person <span class="hljs-keyword">as</span> $$
+<span class="hljs-keyword">declare</span>
+  <span class="hljs-keyword">row</span> person;
+<span class="hljs-keyword">begin</span>
+  <span class="hljs-comment">-- Insert the person’s public profile data.</span>
+  <span class="hljs-keyword">insert</span> <span class="hljs-keyword">into</span> person (given_name, family_name) <span class="hljs-keyword">values</span>
+    (given_name, family_name)
+    <span class="hljs-keyword">returning</span> * <span class="hljs-keyword">into</span> <span class="hljs-keyword">row</span>;
+
+  <span class="hljs-comment">-- Insert the person’s private account data.</span>
+  <span class="hljs-keyword">insert</span> <span class="hljs-keyword">into</span> person_account (person_id, email, pass_hash) <span class="hljs-keyword">values</span>
+    (row.id, email, crypt(<span class="hljs-keyword">password</span>, gen_salt(<span class="hljs-string">'bf'</span>)));
+
+  return row;
+<span class="hljs-keyword">end</span>;
+$$ language plpgsql
+strict
+<span class="hljs-keyword">set</span> search_path <span class="hljs-keyword">from</span> <span class="hljs-keyword">current</span>;
+
+<span class="hljs-keyword">comment</span> <span class="hljs-keyword">on</span> <span class="hljs-keyword">function</span> register_person(<span class="hljs-built_in">varchar</span>, <span class="hljs-built_in">varchar</span>, <span class="hljs-built_in">varchar</span>, <span class="hljs-built_in">varchar</span>) <span class="hljs-keyword">is</span> <span class="hljs-string">'Register a person in our forum.'</span>;
+
+<span class="hljs-comment">-------------------------------------------------------------------------------</span>
+<span class="hljs-comment">-- Triggers</span>
+
+<span class="hljs-comment">-- First we must define two utility functions, `set_created_at` and</span>
+<span class="hljs-comment">-- set_updated_at` which we will use for our triggers.</span>
+<span class="hljs-comment">--</span>
+<span class="hljs-comment">-- Note that we also create them in `forum_example_utils` as we want them to be</span>
+<span class="hljs-comment">-- private and not exposed by PostGraphQL.</span>
+<span class="hljs-comment">--</span>
+<span class="hljs-comment">-- Triggers taken initially from the Rust [Diesel][1] library, documentation</span>
+<span class="hljs-comment">-- for `is distinct from` can be found [here][2].</span>
+<span class="hljs-comment">--</span>
+<span class="hljs-comment">-- [1]: https://github.com/diesel-rs/diesel/blob/1427b9f/diesel/src/pg/connection/setup/timestamp_helpers.sql</span>
+<span class="hljs-comment">-- [2]: https://wiki.postgresql.org/wiki/Is_distinct_from</span>
+
+<span class="hljs-keyword">create</span> <span class="hljs-keyword">function</span> forum_example_utils.set_created_at() <span class="hljs-keyword">returns</span> <span class="hljs-keyword">trigger</span> <span class="hljs-keyword">as</span> $$
+<span class="hljs-keyword">begin</span>
+  <span class="hljs-comment">-- We will let the inserter manually set a `created_at` time if they desire.</span>
+  <span class="hljs-keyword">if</span> (new.created_at <span class="hljs-keyword">is</span> <span class="hljs-literal">null</span>) <span class="hljs-keyword">then</span>
+    new.created_at := <span class="hljs-keyword">current_timestamp</span>;
+  <span class="hljs-keyword">end</span> <span class="hljs-keyword">if</span>;
+  return new;
+<span class="hljs-keyword">end</span>;
+$$ language plpgsql;
+
+<span class="hljs-keyword">create</span> <span class="hljs-keyword">function</span> forum_example_utils.set_updated_at() <span class="hljs-keyword">returns</span> <span class="hljs-keyword">trigger</span> <span class="hljs-keyword">as</span> $$
+<span class="hljs-keyword">begin</span>
+  new.updated_at := <span class="hljs-keyword">current_timestamp</span>;
+  return new;
+<span class="hljs-keyword">end</span>;
+$$ language plpgsql;
+
+<span class="hljs-comment">-- Next we must actually define our triggers for all tables that need them.</span>
+<span class="hljs-comment">--</span>
+<span class="hljs-comment">-- This is not a good example to copy if you are looking for a good way to</span>
+<span class="hljs-comment">-- indent and style your trigger statements. They are all on one line to</span>
+<span class="hljs-comment">-- conserve space :)</span>
+
+<span class="hljs-keyword">create</span> <span class="hljs-keyword">trigger</span> created_at <span class="hljs-keyword">before</span> <span class="hljs-keyword">insert</span> <span class="hljs-keyword">on</span> person <span class="hljs-keyword">for</span> <span class="hljs-keyword">each</span> <span class="hljs-keyword">row</span> <span class="hljs-keyword">execute</span> <span class="hljs-keyword">procedure</span> set_created_at();
+<span class="hljs-keyword">create</span> <span class="hljs-keyword">trigger</span> updated_at <span class="hljs-keyword">before</span> <span class="hljs-keyword">update</span> <span class="hljs-keyword">on</span> person <span class="hljs-keyword">for</span> <span class="hljs-keyword">each</span> <span class="hljs-keyword">row</span> <span class="hljs-keyword">execute</span> <span class="hljs-keyword">procedure</span> set_updated_at();
+<span class="hljs-keyword">create</span> <span class="hljs-keyword">trigger</span> created_at <span class="hljs-keyword">before</span> <span class="hljs-keyword">insert</span> <span class="hljs-keyword">on</span> post <span class="hljs-keyword">for</span> <span class="hljs-keyword">each</span> <span class="hljs-keyword">row</span> <span class="hljs-keyword">execute</span> <span class="hljs-keyword">procedure</span> set_created_at();
+<span class="hljs-keyword">create</span> <span class="hljs-keyword">trigger</span> updated_at <span class="hljs-keyword">before</span> <span class="hljs-keyword">update</span> <span class="hljs-keyword">on</span> post <span class="hljs-keyword">for</span> <span class="hljs-keyword">each</span> <span class="hljs-keyword">row</span> <span class="hljs-keyword">execute</span> <span class="hljs-keyword">procedure</span> set_updated_at();
+
+<span class="hljs-comment">-------------------------------------------------------------------------------</span>
+<span class="hljs-comment">-- Sample Data</span>
+
+<span class="hljs-keyword">insert</span> <span class="hljs-keyword">into</span> person (<span class="hljs-keyword">id</span>, given_name, family_name, about) <span class="hljs-keyword">values</span>
+  (<span class="hljs-number">1</span>, <span class="hljs-string">'Kathryn'</span>, <span class="hljs-string">'Ramirez'</span>, <span class="hljs-literal">null</span>),
+  (<span class="hljs-number">2</span>, <span class="hljs-string">'Johnny'</span>, <span class="hljs-string">'Tucker'</span>, <span class="hljs-literal">null</span>),
+  (<span class="hljs-number">3</span>, <span class="hljs-string">'Nancy'</span>, <span class="hljs-string">'Diaz'</span>, <span class="hljs-literal">null</span>),
+  (<span class="hljs-number">4</span>, <span class="hljs-string">'Russell'</span>, <span class="hljs-string">'Gardner'</span>, <span class="hljs-literal">null</span>),
+  (<span class="hljs-number">5</span>, <span class="hljs-string">'Ann'</span>, <span class="hljs-string">'West'</span>, <span class="hljs-literal">null</span>),
+  (<span class="hljs-number">6</span>, <span class="hljs-string">'Joe'</span>, <span class="hljs-string">'Cruz'</span>, <span class="hljs-literal">null</span>),
+  (<span class="hljs-number">7</span>, <span class="hljs-string">'Scott'</span>, <span class="hljs-string">'Torres'</span>, <span class="hljs-literal">null</span>),
+  (<span class="hljs-number">8</span>, <span class="hljs-string">'David'</span>, <span class="hljs-string">'Bell'</span>, <span class="hljs-literal">null</span>),
+  (<span class="hljs-number">9</span>, <span class="hljs-string">'Carl'</span>, <span class="hljs-string">'Ward'</span>, <span class="hljs-literal">null</span>),
+  (<span class="hljs-number">10</span>, <span class="hljs-string">'Jonathan'</span>, <span class="hljs-string">'Campbell'</span>, <span class="hljs-literal">null</span>),
+  (<span class="hljs-number">11</span>, <span class="hljs-string">'Beverly'</span>, <span class="hljs-string">'Kelly'</span>, <span class="hljs-literal">null</span>),
+  (<span class="hljs-number">12</span>, <span class="hljs-string">'Kelly'</span>, <span class="hljs-string">'Reed'</span>, <span class="hljs-literal">null</span>),
+  (<span class="hljs-number">13</span>, <span class="hljs-string">'Nicholas'</span>, <span class="hljs-string">'Perry'</span>, <span class="hljs-literal">null</span>),
+  (<span class="hljs-number">14</span>, <span class="hljs-string">'Carol'</span>, <span class="hljs-string">'Taylor'</span>, <span class="hljs-literal">null</span>);
+
+<span class="hljs-keyword">alter</span> <span class="hljs-keyword">sequence</span> person_id_seq restart <span class="hljs-keyword">with</span> <span class="hljs-number">15</span>;
+
+<span class="hljs-keyword">insert</span> <span class="hljs-keyword">into</span> post (<span class="hljs-keyword">id</span>, author_id, headline, topic, <span class="hljs-keyword">body</span>) <span class="hljs-keyword">values</span>
+  (<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-string">'No… It’s a thing; it’s like a plan, but with more greatness.'</span>, <span class="hljs-literal">null</span>, <span class="hljs-string">'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ullamcorper, sem sed pulvinar rutrum, nisl dui faucibus velit, eget sodales urna mauris nec lorem. Vivamus faucibus augue sit amet semper fringilla. Cras nec vulputate eros. Proin fermentum purus posuere ipsum accumsan interdum. Nunc vitae urna non mauris pellentesque sodales vel nec elit. Suspendisse pulvinar ornare turpis ac vestibulum. Cras eu congue magna. Nulla vel sodales enim, vel semper dolor. Curabitur pellentesque dolor elit. Aenean cursus posuere dui, vitae mollis felis rhoncus ac. In at orci a erat congue consequat ut sed risus. Etiam euismod elit eu lobortis varius. Praesent lacinia lobortis nisi, vel faucibus turpis sodales in. In interdum lectus tellus, facilisis mollis diam feugiat vitae.'</span>),
+  (<span class="hljs-number">2</span>, <span class="hljs-number">1</span>, <span class="hljs-string">'I hate yogurt. It’s just stuff with bits in.'</span>, <span class="hljs-string">'inspiration'</span>, <span class="hljs-literal">null</span>),
+  (<span class="hljs-number">3</span>, <span class="hljs-number">1</span>, <span class="hljs-string">'Is that a cooking show?'</span>, <span class="hljs-string">'inspiration'</span>, <span class="hljs-literal">null</span>),
+  (<span class="hljs-number">4</span>, <span class="hljs-number">1</span>, <span class="hljs-string">'You hit me with a cricket bat.'</span>, <span class="hljs-literal">null</span>, <span class="hljs-literal">null</span>),
+  (<span class="hljs-number">5</span>, <span class="hljs-number">5</span>, <span class="hljs-string">'Please, Don-Bot… look into your hard drive, and open your mercy file!'</span>, <span class="hljs-literal">null</span>, <span class="hljs-literal">null</span>),
+  (<span class="hljs-number">6</span>, <span class="hljs-number">3</span>, <span class="hljs-string">'Stop talking, brain thinking. Hush.'</span>, <span class="hljs-literal">null</span>, <span class="hljs-literal">null</span>),
+  (<span class="hljs-number">7</span>, <span class="hljs-number">1</span>, <span class="hljs-string">'Large bet on myself in round one.'</span>, <span class="hljs-string">'discussion'</span>, <span class="hljs-literal">null</span>),
+  (<span class="hljs-number">8</span>, <span class="hljs-number">2</span>, <span class="hljs-string">'It’s a fez. I wear a fez now. Fezes are cool.'</span>, <span class="hljs-string">'inspiration'</span>, <span class="hljs-literal">null</span>),
+  (<span class="hljs-number">9</span>, <span class="hljs-number">3</span>, <span class="hljs-string">'You know how I sometimes have really brilliant ideas?'</span>, <span class="hljs-literal">null</span>, <span class="hljs-literal">null</span>),
+  (<span class="hljs-number">10</span>, <span class="hljs-number">2</span>, <span class="hljs-string">'What’s with you kids? Every other day it’s food, food, food.'</span>, <span class="hljs-string">'discussion'</span>, <span class="hljs-literal">null</span>),
+  (<span class="hljs-number">11</span>, <span class="hljs-number">3</span>, <span class="hljs-string">'They’re not aliens, they’re Earth…liens!'</span>, <span class="hljs-string">'help'</span>, <span class="hljs-literal">null</span>),
+  (<span class="hljs-number">12</span>, <span class="hljs-number">5</span>, <span class="hljs-string">'You’ve swallowed a planet!'</span>, <span class="hljs-literal">null</span>, <span class="hljs-literal">null</span>);
+
+<span class="hljs-keyword">alter</span> <span class="hljs-keyword">sequence</span> post_id_seq restart <span class="hljs-keyword">with</span> <span class="hljs-number">13</span>;
+
+<span class="hljs-comment">-------------------------------------------------------------------------------</span>
+<span class="hljs-comment">-- Permissions</span>
+
+<span class="hljs-keyword">grant</span> <span class="hljs-keyword">select</span> <span class="hljs-keyword">on</span> person, post <span class="hljs-keyword">to</span> <span class="hljs-keyword">public</span>;
+
+<span class="hljs-comment">-- Commit all the changes from this transaction. If any statement failed,</span>
+<span class="hljs-comment">-- these statements will not have succeeded.</span>
+<span class="hljs-keyword">commit</span>;
+</code></pre>
+</div></div></div></div><div class="breakpoint-max-width-700" data-reactid="30"><strong data-reactid="31">Topics:</strong><!-- react-text: 32 --> <!-- /react-text --><select data-reactid="33"><option value="/postgraphql-docs/examples/kitchen-sink/" data-reactid="34">Kitchen Sink Example</option><option selected="" value="/postgraphql-docs/examples/forum/" data-reactid="35">Forum Example</option></select><br data-reactid="36"/><br data-reactid="37"/><div class="markdown" data-reactid="38"><h1 data-reactid="39">Forum Example</h1><div data-reactid="40"><p>This directory contains an example PostgreSQL schema which will work with PostGraphQL. The schema used is contained in the <code>schema.sql</code> file, if you want to take a look it is well documented.</p>
+<p>When running the <code>schema.sql</code> file on your PostgreSQL database everything will be created in the <code>forum_example</code> schema.</p>
+<h2>Installation</h2>
+<p>Somehow you need to download this directory, do it however you like but we’ll go over how to do it with git here.</p>
+<pre><code class="language-bash">git <span class="hljs-built_in">clone</span> https://github.com/calebmer/postgraphql.git
+<span class="hljs-built_in">cd</span> postgraphql/examples/forum
+</code></pre>
+<h2>Running</h2>
+<p>Once you are in this directory and have checked to make sure PostgreSQL is running on port 5432, run the following:</p>
+<pre><code class="language-bash">npm install
+psql <span class="hljs-_">-f</span> schema.sql
+postgraphql postgres://localhost:5432 --schema forum_example --development
+</code></pre>
+<p>This will run the SQL in <code>schema.sql</code> on your default database and start PostGraphQL. Navigate to the URL printed in your console and you should see GraphiQL. Use it to navigate the generated documentation for the GraphQL server.</p>
+<p>In some situations, you might need to change the <code>psql</code> and <code>postgraphql</code> commands to better reflect your database environment. For example, you might need to change <code>postgres://localhost:5432</code> to <code>postgres://user:pass@localhost:5432</code> if your database requires authentication.</p>
+<h2>Sample queries</h2>
+<p>To get a post by ID:</p>
+<pre><code class="language-graphql">{
+  post(<span class="hljs-name">id:</span> <span class="hljs-string">"YXJ0aXN0OjE="</span>) {
+    id, headline
+  }
+}
+</code></pre>
+<p>To get a list of all posts:</p>
+<pre><code class="language-graphql">{
+  postNodes {
+    nodes {
+      id, headline
+    }
+  }
+}
+</code></pre>
+<h2><a name="schema"></a>Schema</h2>
+<pre><code class="language-sql"><span class="hljs-comment">-- We begin a transaction so that if any SQL statement fails, none of the</span>
+<span class="hljs-comment">-- changes will be applied.</span>
+<span class="hljs-keyword">begin</span>;
+
+<span class="hljs-comment">-- We want to cryptographically hash passwords, therefore create this</span>
+<span class="hljs-comment">-- extension.</span>
+<span class="hljs-keyword">create</span> extension <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> <span class="hljs-keyword">exists</span> pgcrypto;
+
+<span class="hljs-comment">-- Create the schema we are going to use.</span>
+<span class="hljs-keyword">create</span> <span class="hljs-keyword">schema</span> forum_example;
+
+<span class="hljs-comment">-- Create a schema to host the utilities for our schema. The reason it is in</span>
+<span class="hljs-comment">-- another schema is so that it can be private.</span>
+<span class="hljs-keyword">create</span> <span class="hljs-keyword">schema</span> forum_example_utils;
+
+<span class="hljs-comment">-- By setting the `search_path`, whenever we create something in the default</span>
+<span class="hljs-comment">-- namespace it is actually created in the `forum_example` schema.</span>
+<span class="hljs-comment">--</span>
+<span class="hljs-comment">-- For example, this lets us write `create table person …` instead of</span>
+<span class="hljs-comment">-- `create table forum_example.person …`.</span>
+<span class="hljs-keyword">set</span> search_path = forum_example, forum_example_utils, <span class="hljs-keyword">public</span>;
+
+<span class="hljs-comment">-------------------------------------------------------------------------------</span>
+<span class="hljs-comment">-- Public Tables</span>
+
+<span class="hljs-keyword">create</span> <span class="hljs-keyword">table</span> person (
+  <span class="hljs-keyword">id</span>               <span class="hljs-built_in">serial</span> <span class="hljs-keyword">not</span> <span class="hljs-literal">null</span> primary <span class="hljs-keyword">key</span>,
+  given_name       <span class="hljs-built_in">varchar</span>(<span class="hljs-number">64</span>) <span class="hljs-keyword">not</span> <span class="hljs-literal">null</span>,
+  family_name      <span class="hljs-built_in">varchar</span>(<span class="hljs-number">64</span>),
+  about            <span class="hljs-built_in">text</span>,
+  created_at       <span class="hljs-keyword">timestamp</span>,
+  updated_at       <span class="hljs-keyword">timestamp</span>
+);
+
+<span class="hljs-keyword">comment</span> <span class="hljs-keyword">on</span> <span class="hljs-keyword">table</span> person <span class="hljs-keyword">is</span> <span class="hljs-string">'A user of the forum.'</span>;
+<span class="hljs-keyword">comment</span> <span class="hljs-keyword">on</span> <span class="hljs-keyword">column</span> person.id <span class="hljs-keyword">is</span> <span class="hljs-string">'The primary key for the person.'</span>;
+<span class="hljs-keyword">comment</span> <span class="hljs-keyword">on</span> <span class="hljs-keyword">column</span> person.given_name <span class="hljs-keyword">is</span> <span class="hljs-string">'The person’s first name.'</span>;
+<span class="hljs-keyword">comment</span> <span class="hljs-keyword">on</span> <span class="hljs-keyword">column</span> person.family_name <span class="hljs-keyword">is</span> <span class="hljs-string">'The person’s last name.'</span>;
+<span class="hljs-keyword">comment</span> <span class="hljs-keyword">on</span> <span class="hljs-keyword">column</span> person.about <span class="hljs-keyword">is</span> <span class="hljs-string">'A short description about the user, written by the user.'</span>;
+<span class="hljs-keyword">comment</span> <span class="hljs-keyword">on</span> <span class="hljs-keyword">column</span> person.created_at <span class="hljs-keyword">is</span> <span class="hljs-string">'The time this person was created.'</span>;
+<span class="hljs-keyword">comment</span> <span class="hljs-keyword">on</span> <span class="hljs-keyword">column</span> person.updated_at <span class="hljs-keyword">is</span> <span class="hljs-string">'The latest time this person was updated.'</span>;
+
+<span class="hljs-keyword">create</span> <span class="hljs-keyword">type</span> post_topic <span class="hljs-keyword">as</span> enum (<span class="hljs-string">'discussion'</span>, <span class="hljs-string">'inspiration'</span>, <span class="hljs-string">'help'</span>);
+
+<span class="hljs-keyword">create</span> <span class="hljs-keyword">table</span> post (
+  <span class="hljs-keyword">id</span>               <span class="hljs-built_in">serial</span> <span class="hljs-keyword">not</span> <span class="hljs-literal">null</span> primary <span class="hljs-keyword">key</span>,
+  author_id        <span class="hljs-built_in">int</span> <span class="hljs-keyword">not</span> <span class="hljs-literal">null</span> <span class="hljs-keyword">references</span> person(<span class="hljs-keyword">id</span>),
+  headline         <span class="hljs-built_in">text</span> <span class="hljs-keyword">not</span> <span class="hljs-literal">null</span>,
+  topic            post_topic,
+  <span class="hljs-keyword">body</span>             <span class="hljs-built_in">text</span>,
+  created_at       <span class="hljs-keyword">timestamp</span>,
+  updated_at       <span class="hljs-keyword">timestamp</span>
+);
+
+<span class="hljs-keyword">comment</span> <span class="hljs-keyword">on</span> <span class="hljs-keyword">table</span> post <span class="hljs-keyword">is</span> <span class="hljs-string">'A forum post written by a user.'</span>;
+<span class="hljs-keyword">comment</span> <span class="hljs-keyword">on</span> <span class="hljs-keyword">column</span> post.id <span class="hljs-keyword">is</span> <span class="hljs-string">'The primary key for the post.'</span>;
+<span class="hljs-keyword">comment</span> <span class="hljs-keyword">on</span> <span class="hljs-keyword">column</span> post.headline <span class="hljs-keyword">is</span> <span class="hljs-string">'The title written by the user.'</span>;
+<span class="hljs-keyword">comment</span> <span class="hljs-keyword">on</span> <span class="hljs-keyword">column</span> post.author_id <span class="hljs-keyword">is</span> <span class="hljs-string">'The id of the author user.'</span>;
+<span class="hljs-keyword">comment</span> <span class="hljs-keyword">on</span> <span class="hljs-keyword">column</span> post.topic <span class="hljs-keyword">is</span> <span class="hljs-string">'The topic this has been posted in.'</span>;
+<span class="hljs-keyword">comment</span> <span class="hljs-keyword">on</span> <span class="hljs-keyword">column</span> post.body <span class="hljs-keyword">is</span> <span class="hljs-string">'The main body text of our post.'</span>;
+<span class="hljs-keyword">comment</span> <span class="hljs-keyword">on</span> <span class="hljs-keyword">column</span> post.created_at <span class="hljs-keyword">is</span> <span class="hljs-string">'The time this post was created.'</span>;
+<span class="hljs-keyword">comment</span> <span class="hljs-keyword">on</span> <span class="hljs-keyword">column</span> post.updated_at <span class="hljs-keyword">is</span> <span class="hljs-string">'The latest time this post was updated.'</span>;
+
+<span class="hljs-comment">-------------------------------------------------------------------------------</span>
+<span class="hljs-comment">-- Private Tables</span>
+
+<span class="hljs-keyword">create</span> <span class="hljs-keyword">table</span> forum_example_utils.person_account (
+  person_id        <span class="hljs-built_in">int</span> <span class="hljs-keyword">not</span> <span class="hljs-literal">null</span> primary <span class="hljs-keyword">key</span>,
+  email            <span class="hljs-built_in">varchar</span> <span class="hljs-keyword">not</span> <span class="hljs-literal">null</span> <span class="hljs-keyword">unique</span> <span class="hljs-keyword">check</span> (email ~* <span class="hljs-string">'^.+@.+\..+$'</span>),
+  pass_hash        <span class="hljs-built_in">char</span>(<span class="hljs-number">60</span>) <span class="hljs-keyword">not</span> <span class="hljs-literal">null</span>
+);
+
+<span class="hljs-keyword">comment</span> <span class="hljs-keyword">on</span> <span class="hljs-keyword">table</span> person_account <span class="hljs-keyword">is</span> <span class="hljs-string">'Private information about a person’s account.'</span>;
+<span class="hljs-keyword">comment</span> <span class="hljs-keyword">on</span> <span class="hljs-keyword">column</span> person_account.person_id <span class="hljs-keyword">is</span> <span class="hljs-string">'The id of the person associated with this account.'</span>;
+<span class="hljs-keyword">comment</span> <span class="hljs-keyword">on</span> <span class="hljs-keyword">column</span> person_account.email <span class="hljs-keyword">is</span> <span class="hljs-string">'The email address of the person.'</span>;
+<span class="hljs-keyword">comment</span> <span class="hljs-keyword">on</span> <span class="hljs-keyword">column</span> person_account.pass_hash <span class="hljs-keyword">is</span> <span class="hljs-string">'An opaque hash of the person’s password.'</span>;
+
+<span class="hljs-comment">-------------------------------------------------------------------------------</span>
+<span class="hljs-comment">-- Query Procedures</span>
+
+<span class="hljs-comment">-- Computes the full name for a person using the person’s `given_name` and a</span>
+<span class="hljs-comment">-- `family_name`.</span>
+<span class="hljs-keyword">create</span> <span class="hljs-keyword">function</span> person_full_name(person) <span class="hljs-keyword">returns</span> <span class="hljs-built_in">varchar</span> <span class="hljs-keyword">as</span> $$
+  <span class="hljs-keyword">select</span> $<span class="hljs-number">1.</span>given_name || <span class="hljs-string">' '</span> || $<span class="hljs-number">1.</span>family_name
+$$ <span class="hljs-keyword">language</span> <span class="hljs-keyword">sql</span>
+stable;
+
+<span class="hljs-keyword">comment</span> <span class="hljs-keyword">on</span> <span class="hljs-keyword">function</span> person_full_name(person) <span class="hljs-keyword">is</span> <span class="hljs-string">'A person’s full name including their first and last name.'</span>;
+
+<span class="hljs-comment">-- Fetches and returns the latest post authored by our person.</span>
+<span class="hljs-keyword">create</span> <span class="hljs-keyword">function</span> person_latest_post(person) <span class="hljs-keyword">returns</span> post <span class="hljs-keyword">as</span> $$
+  <span class="hljs-keyword">select</span> *
+  <span class="hljs-keyword">from</span> post
+  <span class="hljs-keyword">where</span> author_id = $<span class="hljs-number">1.</span><span class="hljs-keyword">id</span>
+  <span class="hljs-keyword">order</span> <span class="hljs-keyword">by</span> created_at <span class="hljs-keyword">desc</span>
+  <span class="hljs-keyword">limit</span> <span class="hljs-number">1</span>
+$$ <span class="hljs-keyword">language</span> <span class="hljs-keyword">sql</span>
+stable
+<span class="hljs-keyword">set</span> search_path <span class="hljs-keyword">from</span> <span class="hljs-keyword">current</span>;
+
+<span class="hljs-keyword">comment</span> <span class="hljs-keyword">on</span> <span class="hljs-keyword">function</span> person_latest_post(person) <span class="hljs-keyword">is</span> <span class="hljs-string">'Get’s the latest post written by the person.'</span>;
+
+<span class="hljs-comment">-- Truncates the body with a given length and a given omission character. The</span>
+<span class="hljs-comment">-- reason we don’t use defaults is because PostGraphQL will always send three</span>
+<span class="hljs-comment">-- parameters and if one parameter is null, the default won’t be used.</span>
+<span class="hljs-keyword">create</span> <span class="hljs-keyword">function</span> post_summary(
+  post,
+  <span class="hljs-keyword">length</span> <span class="hljs-built_in">int</span>,
+  omission <span class="hljs-built_in">varchar</span>
+) <span class="hljs-keyword">returns</span> <span class="hljs-built_in">text</span> <span class="hljs-keyword">as</span> $$
+  <span class="hljs-keyword">select</span> <span class="hljs-keyword">case</span>
+    <span class="hljs-keyword">when</span> $<span class="hljs-number">1.</span><span class="hljs-keyword">body</span> <span class="hljs-keyword">is</span> <span class="hljs-literal">null</span> <span class="hljs-keyword">then</span> <span class="hljs-literal">null</span>
+    <span class="hljs-keyword">else</span> <span class="hljs-keyword">substring</span>($<span class="hljs-number">1.</span><span class="hljs-keyword">body</span> <span class="hljs-keyword">from</span> <span class="hljs-number">0</span> <span class="hljs-keyword">for</span> <span class="hljs-keyword">coalesce</span>(<span class="hljs-keyword">length</span>, <span class="hljs-number">50</span>)) || <span class="hljs-keyword">coalesce</span>(omission, <span class="hljs-string">'…'</span>)
+  <span class="hljs-keyword">end</span>
+$$ <span class="hljs-keyword">language</span> <span class="hljs-keyword">sql</span>
+stable;
+
+<span class="hljs-keyword">comment</span> <span class="hljs-keyword">on</span> <span class="hljs-keyword">function</span> post_summary(post, <span class="hljs-built_in">int</span>, <span class="hljs-built_in">varchar</span>) <span class="hljs-keyword">is</span> <span class="hljs-string">'A truncated version of the body for summaries.'</span>;
+
+<span class="hljs-comment">-- A procedure to search the headline and body of all posts using a given</span>
+<span class="hljs-comment">-- search term.</span>
+<span class="hljs-keyword">create</span> <span class="hljs-keyword">function</span> search_posts(<span class="hljs-keyword">search</span> <span class="hljs-built_in">varchar</span>) <span class="hljs-keyword">returns</span> setof post <span class="hljs-keyword">as</span> $$
+  <span class="hljs-keyword">select</span> * <span class="hljs-keyword">from</span> post <span class="hljs-keyword">where</span> headline <span class="hljs-keyword">ilike</span> (<span class="hljs-string">'%'</span> || <span class="hljs-keyword">search</span> || <span class="hljs-string">'%'</span>) <span class="hljs-keyword">or</span> <span class="hljs-keyword">body</span> <span class="hljs-keyword">ilike</span> (<span class="hljs-string">'%'</span> || <span class="hljs-keyword">search</span> || <span class="hljs-string">'%'</span>)
+$$ <span class="hljs-keyword">language</span> <span class="hljs-keyword">sql</span>
+stable
+<span class="hljs-keyword">set</span> search_path <span class="hljs-keyword">from</span> <span class="hljs-keyword">current</span>;
+
+<span class="hljs-keyword">comment</span> <span class="hljs-keyword">on</span> <span class="hljs-keyword">function</span> search_posts(<span class="hljs-built_in">varchar</span>) <span class="hljs-keyword">is</span> <span class="hljs-string">'Returns posts containing a given search term.'</span>;
+
+<span class="hljs-comment">-------------------------------------------------------------------------------</span>
+<span class="hljs-comment">-- Mutation Procedures</span>
+
+<span class="hljs-comment">-- Registers a person in our forum with a few key parameters creating a</span>
+<span class="hljs-comment">-- `person` row and an associated `person_account` row.</span>
+<span class="hljs-keyword">create</span> <span class="hljs-keyword">function</span> register_person(
+  given_name <span class="hljs-built_in">varchar</span>,
+  family_name <span class="hljs-built_in">varchar</span>,
+  email <span class="hljs-built_in">varchar</span>,
+  <span class="hljs-keyword">password</span> <span class="hljs-built_in">varchar</span>
+) <span class="hljs-keyword">returns</span> person <span class="hljs-keyword">as</span> $$
+<span class="hljs-keyword">declare</span>
+  <span class="hljs-keyword">row</span> person;
+<span class="hljs-keyword">begin</span>
+  <span class="hljs-comment">-- Insert the person’s public profile data.</span>
+  <span class="hljs-keyword">insert</span> <span class="hljs-keyword">into</span> person (given_name, family_name) <span class="hljs-keyword">values</span>
+    (given_name, family_name)
+    <span class="hljs-keyword">returning</span> * <span class="hljs-keyword">into</span> <span class="hljs-keyword">row</span>;
+
+  <span class="hljs-comment">-- Insert the person’s private account data.</span>
+  <span class="hljs-keyword">insert</span> <span class="hljs-keyword">into</span> person_account (person_id, email, pass_hash) <span class="hljs-keyword">values</span>
+    (row.id, email, crypt(<span class="hljs-keyword">password</span>, gen_salt(<span class="hljs-string">'bf'</span>)));
+
+  return row;
+<span class="hljs-keyword">end</span>;
+$$ language plpgsql
+strict
+<span class="hljs-keyword">set</span> search_path <span class="hljs-keyword">from</span> <span class="hljs-keyword">current</span>;
+
+<span class="hljs-keyword">comment</span> <span class="hljs-keyword">on</span> <span class="hljs-keyword">function</span> register_person(<span class="hljs-built_in">varchar</span>, <span class="hljs-built_in">varchar</span>, <span class="hljs-built_in">varchar</span>, <span class="hljs-built_in">varchar</span>) <span class="hljs-keyword">is</span> <span class="hljs-string">'Register a person in our forum.'</span>;
+
+<span class="hljs-comment">-------------------------------------------------------------------------------</span>
+<span class="hljs-comment">-- Triggers</span>
+
+<span class="hljs-comment">-- First we must define two utility functions, `set_created_at` and</span>
+<span class="hljs-comment">-- set_updated_at` which we will use for our triggers.</span>
+<span class="hljs-comment">--</span>
+<span class="hljs-comment">-- Note that we also create them in `forum_example_utils` as we want them to be</span>
+<span class="hljs-comment">-- private and not exposed by PostGraphQL.</span>
+<span class="hljs-comment">--</span>
+<span class="hljs-comment">-- Triggers taken initially from the Rust [Diesel][1] library, documentation</span>
+<span class="hljs-comment">-- for `is distinct from` can be found [here][2].</span>
+<span class="hljs-comment">--</span>
+<span class="hljs-comment">-- [1]: https://github.com/diesel-rs/diesel/blob/1427b9f/diesel/src/pg/connection/setup/timestamp_helpers.sql</span>
+<span class="hljs-comment">-- [2]: https://wiki.postgresql.org/wiki/Is_distinct_from</span>
+
+<span class="hljs-keyword">create</span> <span class="hljs-keyword">function</span> forum_example_utils.set_created_at() <span class="hljs-keyword">returns</span> <span class="hljs-keyword">trigger</span> <span class="hljs-keyword">as</span> $$
+<span class="hljs-keyword">begin</span>
+  <span class="hljs-comment">-- We will let the inserter manually set a `created_at` time if they desire.</span>
+  <span class="hljs-keyword">if</span> (new.created_at <span class="hljs-keyword">is</span> <span class="hljs-literal">null</span>) <span class="hljs-keyword">then</span>
+    new.created_at := <span class="hljs-keyword">current_timestamp</span>;
+  <span class="hljs-keyword">end</span> <span class="hljs-keyword">if</span>;
+  return new;
+<span class="hljs-keyword">end</span>;
+$$ language plpgsql;
+
+<span class="hljs-keyword">create</span> <span class="hljs-keyword">function</span> forum_example_utils.set_updated_at() <span class="hljs-keyword">returns</span> <span class="hljs-keyword">trigger</span> <span class="hljs-keyword">as</span> $$
+<span class="hljs-keyword">begin</span>
+  new.updated_at := <span class="hljs-keyword">current_timestamp</span>;
+  return new;
+<span class="hljs-keyword">end</span>;
+$$ language plpgsql;
+
+<span class="hljs-comment">-- Next we must actually define our triggers for all tables that need them.</span>
+<span class="hljs-comment">--</span>
+<span class="hljs-comment">-- This is not a good example to copy if you are looking for a good way to</span>
+<span class="hljs-comment">-- indent and style your trigger statements. They are all on one line to</span>
+<span class="hljs-comment">-- conserve space :)</span>
+
+<span class="hljs-keyword">create</span> <span class="hljs-keyword">trigger</span> created_at <span class="hljs-keyword">before</span> <span class="hljs-keyword">insert</span> <span class="hljs-keyword">on</span> person <span class="hljs-keyword">for</span> <span class="hljs-keyword">each</span> <span class="hljs-keyword">row</span> <span class="hljs-keyword">execute</span> <span class="hljs-keyword">procedure</span> set_created_at();
+<span class="hljs-keyword">create</span> <span class="hljs-keyword">trigger</span> updated_at <span class="hljs-keyword">before</span> <span class="hljs-keyword">update</span> <span class="hljs-keyword">on</span> person <span class="hljs-keyword">for</span> <span class="hljs-keyword">each</span> <span class="hljs-keyword">row</span> <span class="hljs-keyword">execute</span> <span class="hljs-keyword">procedure</span> set_updated_at();
+<span class="hljs-keyword">create</span> <span class="hljs-keyword">trigger</span> created_at <span class="hljs-keyword">before</span> <span class="hljs-keyword">insert</span> <span class="hljs-keyword">on</span> post <span class="hljs-keyword">for</span> <span class="hljs-keyword">each</span> <span class="hljs-keyword">row</span> <span class="hljs-keyword">execute</span> <span class="hljs-keyword">procedure</span> set_created_at();
+<span class="hljs-keyword">create</span> <span class="hljs-keyword">trigger</span> updated_at <span class="hljs-keyword">before</span> <span class="hljs-keyword">update</span> <span class="hljs-keyword">on</span> post <span class="hljs-keyword">for</span> <span class="hljs-keyword">each</span> <span class="hljs-keyword">row</span> <span class="hljs-keyword">execute</span> <span class="hljs-keyword">procedure</span> set_updated_at();
+
+<span class="hljs-comment">-------------------------------------------------------------------------------</span>
+<span class="hljs-comment">-- Sample Data</span>
+
+<span class="hljs-keyword">insert</span> <span class="hljs-keyword">into</span> person (<span class="hljs-keyword">id</span>, given_name, family_name, about) <span class="hljs-keyword">values</span>
+  (<span class="hljs-number">1</span>, <span class="hljs-string">'Kathryn'</span>, <span class="hljs-string">'Ramirez'</span>, <span class="hljs-literal">null</span>),
+  (<span class="hljs-number">2</span>, <span class="hljs-string">'Johnny'</span>, <span class="hljs-string">'Tucker'</span>, <span class="hljs-literal">null</span>),
+  (<span class="hljs-number">3</span>, <span class="hljs-string">'Nancy'</span>, <span class="hljs-string">'Diaz'</span>, <span class="hljs-literal">null</span>),
+  (<span class="hljs-number">4</span>, <span class="hljs-string">'Russell'</span>, <span class="hljs-string">'Gardner'</span>, <span class="hljs-literal">null</span>),
+  (<span class="hljs-number">5</span>, <span class="hljs-string">'Ann'</span>, <span class="hljs-string">'West'</span>, <span class="hljs-literal">null</span>),
+  (<span class="hljs-number">6</span>, <span class="hljs-string">'Joe'</span>, <span class="hljs-string">'Cruz'</span>, <span class="hljs-literal">null</span>),
+  (<span class="hljs-number">7</span>, <span class="hljs-string">'Scott'</span>, <span class="hljs-string">'Torres'</span>, <span class="hljs-literal">null</span>),
+  (<span class="hljs-number">8</span>, <span class="hljs-string">'David'</span>, <span class="hljs-string">'Bell'</span>, <span class="hljs-literal">null</span>),
+  (<span class="hljs-number">9</span>, <span class="hljs-string">'Carl'</span>, <span class="hljs-string">'Ward'</span>, <span class="hljs-literal">null</span>),
+  (<span class="hljs-number">10</span>, <span class="hljs-string">'Jonathan'</span>, <span class="hljs-string">'Campbell'</span>, <span class="hljs-literal">null</span>),
+  (<span class="hljs-number">11</span>, <span class="hljs-string">'Beverly'</span>, <span class="hljs-string">'Kelly'</span>, <span class="hljs-literal">null</span>),
+  (<span class="hljs-number">12</span>, <span class="hljs-string">'Kelly'</span>, <span class="hljs-string">'Reed'</span>, <span class="hljs-literal">null</span>),
+  (<span class="hljs-number">13</span>, <span class="hljs-string">'Nicholas'</span>, <span class="hljs-string">'Perry'</span>, <span class="hljs-literal">null</span>),
+  (<span class="hljs-number">14</span>, <span class="hljs-string">'Carol'</span>, <span class="hljs-string">'Taylor'</span>, <span class="hljs-literal">null</span>);
+
+<span class="hljs-keyword">alter</span> <span class="hljs-keyword">sequence</span> person_id_seq restart <span class="hljs-keyword">with</span> <span class="hljs-number">15</span>;
+
+<span class="hljs-keyword">insert</span> <span class="hljs-keyword">into</span> post (<span class="hljs-keyword">id</span>, author_id, headline, topic, <span class="hljs-keyword">body</span>) <span class="hljs-keyword">values</span>
+  (<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-string">'No… It’s a thing; it’s like a plan, but with more greatness.'</span>, <span class="hljs-literal">null</span>, <span class="hljs-string">'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ullamcorper, sem sed pulvinar rutrum, nisl dui faucibus velit, eget sodales urna mauris nec lorem. Vivamus faucibus augue sit amet semper fringilla. Cras nec vulputate eros. Proin fermentum purus posuere ipsum accumsan interdum. Nunc vitae urna non mauris pellentesque sodales vel nec elit. Suspendisse pulvinar ornare turpis ac vestibulum. Cras eu congue magna. Nulla vel sodales enim, vel semper dolor. Curabitur pellentesque dolor elit. Aenean cursus posuere dui, vitae mollis felis rhoncus ac. In at orci a erat congue consequat ut sed risus. Etiam euismod elit eu lobortis varius. Praesent lacinia lobortis nisi, vel faucibus turpis sodales in. In interdum lectus tellus, facilisis mollis diam feugiat vitae.'</span>),
+  (<span class="hljs-number">2</span>, <span class="hljs-number">1</span>, <span class="hljs-string">'I hate yogurt. It’s just stuff with bits in.'</span>, <span class="hljs-string">'inspiration'</span>, <span class="hljs-literal">null</span>),
+  (<span class="hljs-number">3</span>, <span class="hljs-number">1</span>, <span class="hljs-string">'Is that a cooking show?'</span>, <span class="hljs-string">'inspiration'</span>, <span class="hljs-literal">null</span>),
+  (<span class="hljs-number">4</span>, <span class="hljs-number">1</span>, <span class="hljs-string">'You hit me with a cricket bat.'</span>, <span class="hljs-literal">null</span>, <span class="hljs-literal">null</span>),
+  (<span class="hljs-number">5</span>, <span class="hljs-number">5</span>, <span class="hljs-string">'Please, Don-Bot… look into your hard drive, and open your mercy file!'</span>, <span class="hljs-literal">null</span>, <span class="hljs-literal">null</span>),
+  (<span class="hljs-number">6</span>, <span class="hljs-number">3</span>, <span class="hljs-string">'Stop talking, brain thinking. Hush.'</span>, <span class="hljs-literal">null</span>, <span class="hljs-literal">null</span>),
+  (<span class="hljs-number">7</span>, <span class="hljs-number">1</span>, <span class="hljs-string">'Large bet on myself in round one.'</span>, <span class="hljs-string">'discussion'</span>, <span class="hljs-literal">null</span>),
+  (<span class="hljs-number">8</span>, <span class="hljs-number">2</span>, <span class="hljs-string">'It’s a fez. I wear a fez now. Fezes are cool.'</span>, <span class="hljs-string">'inspiration'</span>, <span class="hljs-literal">null</span>),
+  (<span class="hljs-number">9</span>, <span class="hljs-number">3</span>, <span class="hljs-string">'You know how I sometimes have really brilliant ideas?'</span>, <span class="hljs-literal">null</span>, <span class="hljs-literal">null</span>),
+  (<span class="hljs-number">10</span>, <span class="hljs-number">2</span>, <span class="hljs-string">'What’s with you kids? Every other day it’s food, food, food.'</span>, <span class="hljs-string">'discussion'</span>, <span class="hljs-literal">null</span>),
+  (<span class="hljs-number">11</span>, <span class="hljs-number">3</span>, <span class="hljs-string">'They’re not aliens, they’re Earth…liens!'</span>, <span class="hljs-string">'help'</span>, <span class="hljs-literal">null</span>),
+  (<span class="hljs-number">12</span>, <span class="hljs-number">5</span>, <span class="hljs-string">'You’ve swallowed a planet!'</span>, <span class="hljs-literal">null</span>, <span class="hljs-literal">null</span>);
+
+<span class="hljs-keyword">alter</span> <span class="hljs-keyword">sequence</span> post_id_seq restart <span class="hljs-keyword">with</span> <span class="hljs-number">13</span>;
+
+<span class="hljs-comment">-------------------------------------------------------------------------------</span>
+<span class="hljs-comment">-- Permissions</span>
+
+<span class="hljs-keyword">grant</span> <span class="hljs-keyword">select</span> <span class="hljs-keyword">on</span> person, post <span class="hljs-keyword">to</span> <span class="hljs-keyword">public</span>;
+
+<span class="hljs-comment">-- Commit all the changes from this transaction. If any statement failed,</span>
+<span class="hljs-comment">-- these statements will not have succeeded.</span>
+<span class="hljs-keyword">commit</span>;
+</code></pre>
+</div></div></div></div><span style="display:block;clear:both;" data-reactid="41"> </span></div></div></div><script src="/postgraphql-docs/bundle.js?t=1473678537470"></script></body></html>

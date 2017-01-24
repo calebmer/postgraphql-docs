@@ -1,5 +1,7 @@
 # postgraphql-docs
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/calebmer/postgraphql-docs.svg)](https://greenkeeper.io/)
+
 Documentation website for PostGraphQL.
 
 ## Getting Started
